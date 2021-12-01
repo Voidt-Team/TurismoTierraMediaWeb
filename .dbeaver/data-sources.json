@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-17d76efe183-bdc1dad7b53dbd3": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "ttm_db.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\Pika\\eclipse-workspace\\ttm_web_voidteam\\src\\main\\database\\ttm_db.db",
+				"url": "jdbc:sqlite:C:\\Users\\Pika\\eclipse-workspace\\ttm_web_voidteam\\src\\main\\database\\ttm_db.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
