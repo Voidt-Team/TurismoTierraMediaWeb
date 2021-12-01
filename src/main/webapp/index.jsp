@@ -33,7 +33,10 @@
 <body>
 <h2>Turismo en la Tierra Media</h2>
 <h3>Seleccione un usuario</h3>
-<% Usuario usuario = new Usuario(1, "Cecilia", 100.0, 100.0, 3, 1); %>
+<% UsuarioDAO usuarioDAO = new UsuarioDAO();
+%>
+<% Usuario usuario = usuarioDAO.findById(11);
+//Usuario usuario = new Usuario(1, "Cecilia", 100.0, 100.0, 3, 1); %>
 <h3>Usuario: <%= usuario.getNombre()%>
 </h3>
 </body>
