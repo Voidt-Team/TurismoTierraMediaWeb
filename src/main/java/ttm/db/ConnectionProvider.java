@@ -19,7 +19,7 @@ private static Connection connection;
 		} catch (ClassNotFoundException e) {
 			throw new SQLException(e);
 		}
-		String dbAbsoluteUrl = "jdbc:sqlite:/Users/Pika/eclipse-workspace/ttm_web_voidteam/src/main/database";
+		String dbAbsoluteUrl = "jdbc:sqlite:database/ttm_db.db";
 		if (connection == null) {
 			connection = DriverManager.getConnection(dbAbsoluteUrl);
 		}
