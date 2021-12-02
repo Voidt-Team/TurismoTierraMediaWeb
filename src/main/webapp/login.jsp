@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -9,14 +9,20 @@
     <link rel="stylesheet" type="text/css" href="/ttm_web_voidteam/stylesheets/login.css"/>
     
 
+
 </head>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
+    
+    
+    <title>Login - TTM</title>
+    
     <form action="login" method="post">
-
+    	<h2 align=center>BIENVENIDOS A</h2>
+		<h2 align=center>TURISMO EN LA TIERRA MEDIA</h2>
 				<div class="mb-3">
 					<label for="username" class="form-label">Usuario</label> <input
 						class="form-control" name="username">
@@ -31,6 +37,7 @@
 					<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
 				</div>
 			</form>
+
 	
 </body>
 </html>
