@@ -34,10 +34,18 @@
 <h2>Turismo en la Tierra Media</h2>
 <h3>Seleccione un usuario</h3>
 <% UsuarioDAO usuarioDAO = new UsuarioDAO();
-%>
-<% Usuario usuario = usuarioDAO.findById(11);
-//Usuario usuario = new Usuario(1, "Cecilia", 100.0, 100.0, 3, 1); %>
-<h3>Usuario: <%= usuario.getNombre()%>
+	List<Usuario> usuarios = new ArrayList<Usuario>();
+	usuarios = usuarioDAO.findAll();
+	int option = 0;%>
+	<select>
+	<% for(Usuario usuario: usuarios){ 
+			option++;
+	%>
+		<option value = option>
+		<%= usuario.getNombre()%>
+		</option>
+	<% } %>
+	</select>
 </h3>
 </body>
 </html>
