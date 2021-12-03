@@ -37,7 +37,5 @@
 					<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
 				</div>
 			</form>
-
-	
 </body>
 </html>
