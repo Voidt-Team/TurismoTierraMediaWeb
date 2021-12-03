@@ -24,5 +24,16 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Sergito/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar" sourcepath="C:/Users/Sergito/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="jbcrypt-0.4.jar"/>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/Sergito/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4-javadoc.jar!/"/>
+			<attribute name="maven.groupId" value="org.mindrot"/>
+			<attribute name="maven.artifactId" value="jbcrypt"/>
+			<attribute name="maven.version" value="0.4"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
