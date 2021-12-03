@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ttm.Atraccion;
-import ttm.Itinerario;
-import ttm.Promocion;
-import ttm.Usuario;
 import ttm.db.ConnectionProvider;
+import ttm.model.Atraccion;
+import ttm.model.Itinerario;
+import ttm.model.Promocion;
+import ttm.model.Usuario;
 
 
 public class ItinerarioDAO {

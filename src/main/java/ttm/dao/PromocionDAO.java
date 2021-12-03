@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ttm.Atraccion;
-import ttm.Promocion;
 import ttm.db.ConnectionProvider;
+import ttm.model.Atraccion;
+import ttm.model.Promocion;
 
 public class PromocionDAO {
 	

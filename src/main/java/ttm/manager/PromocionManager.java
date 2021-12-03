@@ -3,9 +3,9 @@ package ttm.manager;
 import java.sql.SQLException;
 import java.util.List;
 
-import ttm.Atraccion;
-import ttm.Promocion;
 import ttm.dao.PromocionDAO;
+import ttm.model.Atraccion;
+import ttm.model.Promocion;
 
 
 public class PromocionManager {

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ttm.Atraccion;
 import ttm.db.ConnectionProvider;
+import ttm.model.Atraccion;
 
 public class AtraccionDAO {
 	

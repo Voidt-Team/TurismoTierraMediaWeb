@@ -1,4 +1,4 @@
-package ttm;
+package ttm.model;
 
 public class TiposDeAtracciones {
 	Integer id_tipo_atraccion = 0;

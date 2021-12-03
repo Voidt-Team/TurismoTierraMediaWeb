@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import ttm.Usuario;
+
 import ttm.db.ConnectionProvider;
+import ttm.model.Usuario;
 
 public class UsuarioDAO {
 

@@ -1,4 +1,4 @@
-package ttm;
+package ttm.model;
 
 import java.io.InputStreamReader;
 import java.sql.SQLException;

@@ -4,7 +4,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%> 
-<%@page import="ttm.Usuario"%>    
+<%@page import="ttm.model.Usuario"%>    
 <%@page import="ttm.dao.UsuarioDAO"%>  
 <%@page import="ttm.dao.UsuarioDAO"%> 
 <%@page import="ttm.manager.UsuarioManager"%> 

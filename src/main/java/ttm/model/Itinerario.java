@@ -1,4 +1,4 @@
-package ttm;
+package ttm.model;
 
 public class Itinerario {
 	private Integer id_itinerario;

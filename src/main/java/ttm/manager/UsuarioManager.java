@@ -1,7 +1,8 @@
 package ttm.manager;
 import java.sql.SQLException;
-import ttm.Usuario;
+
 import ttm.dao.UsuarioDAO;
+import ttm.model.Usuario;
 
 
 public class UsuarioManager {

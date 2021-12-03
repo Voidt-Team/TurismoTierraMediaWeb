@@ -1,4 +1,4 @@
-package ttm;
+package ttm.model;
 import java.util.List;
 
 public class Promocion {

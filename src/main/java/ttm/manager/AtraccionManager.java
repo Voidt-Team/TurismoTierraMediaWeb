@@ -1,8 +1,9 @@
 package ttm.manager;
 
 import java.sql.SQLException;
-import ttm.Atraccion;
+
 import ttm.dao.AtraccionDAO;
+import ttm.model.Atraccion;
 
 
 
