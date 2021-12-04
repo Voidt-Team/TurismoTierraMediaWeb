@@ -2,6 +2,7 @@ package ttm.controller.Session;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,7 +15,12 @@ import ttm.services.LoginService;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 8308079314140233763L;
+	
+	/*
+	 * serial auto-generado...
+	 */
+	private static final long serialVersionUID = -9218809313895615851L;
+	
 	private LoginService loginService;
 
 	@Override
@@ -24,11 +30,17 @@ public class LoginServlet extends HttpServlet {
 	}
 	
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	String username = req.getParameter("username");
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    	String nombre = req.getParameter("nombre");
     	String password = req.getParameter("password");
     	
-    	User user = loginService.login(username, password);
+    	Usuario user=null;
+		try {
+			user = loginService.login(nombre, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	if (!user.isNull()) {
     		req.getSession().setAttribute("user", user);

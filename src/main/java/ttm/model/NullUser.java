@@ -1,15 +1,14 @@
-package ttm.model.nullobjects;
+package ttm.model;
 
-import ttm.model.Usuario;
 
 public class NullUser extends Usuario {
 
-	public static User build() {
+	public static Usuario build()  {
 		return new NullUser();
 	}
 	
 	public NullUser() {
-		super(0, "", "", 0, 0.0, false);
+		super(0, "", 0.0,0.0,0,0,"");
 	}
 	
 	public boolean isNull() {

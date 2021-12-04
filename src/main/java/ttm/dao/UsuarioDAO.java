@@ -84,6 +84,25 @@ public class UsuarioDAO {
 		}
 		return usuario;
 	}
+	
+	//Busca un usuario por nombre
+	public Usuario findByname(String nomb) throws SQLException {
+		Usuario usuario = null;
+
+		Connection connection = ConnectionProvider.getConnection();
+
+		String query = "SELECT * FROM usuarios WHERE nombre = ?";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, nomb);
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			usuario = toUsuario(resultSet);
+		}
+		return usuario;
+	}
 
 	
 	// este metodo se encarga de llamar al constructor con los resultados de la consulta
@@ -94,8 +113,9 @@ public class UsuarioDAO {
 		Double tiempo = resultSet.getDouble("tiempo");
 		Integer atraccion_preferida = resultSet.getInt("id_tipo_de_atraccion");
 		Integer admin = resultSet.getInt("admin");
+		String password = resultSet.getString("password");
 		
-		return new Usuario(id, nombre, presupuesto, tiempo, atraccion_preferida, admin);
+		return new Usuario(id, nombre, presupuesto, tiempo, atraccion_preferida, admin,password);
 	}
 
 
@@ -103,7 +123,7 @@ public class UsuarioDAO {
 	public void insert(Usuario nuevoUsuario) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 		
-		String query = "INSERT INTO usuarios(id_usuario, nombre, presupuesto, tiempo, atraccion_preferida, admin) VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO usuarios(id_usuario, nombre, presupuesto, tiempo, atraccion_preferida, admin,password) VALUES (?,?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, nuevoUsuario.getId());
@@ -112,6 +132,7 @@ public class UsuarioDAO {
 		preparedStatement.setDouble(4, nuevoUsuario.getTiempo());
 		preparedStatement.setInt(5, nuevoUsuario.getAtraccion_preferida());
 		preparedStatement.setInt(6, nuevoUsuario.getAdmin());
+		preparedStatement.setString(7, nuevoUsuario.getPassword());
 		preparedStatement.executeUpdate();
 	}
 }

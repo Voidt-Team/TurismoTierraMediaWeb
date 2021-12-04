@@ -10,8 +10,8 @@ public class UsuarioManager {
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
 	
 	//Alta de usuario
-	public void nuevoUsuario(Integer id, String nombre, Double presupuesto, Double tiempo, Integer atraccion_preferida, Integer admin) throws SQLException {
-		Usuario nuevoUsuario = new Usuario (id, nombre, presupuesto, tiempo, atraccion_preferida, admin);
+	public void nuevoUsuario(Integer id, String nombre, Double presupuesto, Double tiempo, Integer atraccion_preferida, Integer admin, String password) throws SQLException {
+		Usuario nuevoUsuario = new Usuario (id, nombre, presupuesto, tiempo, atraccion_preferida, admin,password);
 		
 		try {
 			usuarioDAO.insert(nuevoUsuario);

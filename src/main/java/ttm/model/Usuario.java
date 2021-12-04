@@ -1,5 +1,7 @@
 package ttm.model;
 
+import ttm.utils.Crypt;
+
 public class Usuario {
 
 	// Ordenamos los atributos segun el orden del txt.-
@@ -10,8 +12,9 @@ public class Usuario {
 	private Integer idItinerario;
 	private Integer atraccion_preferida;
 	private Integer admin;
+	private String password;
 
-	public Usuario(Integer id_usuario, String nombre, Double presupuesto, Double tiempo, Integer atraccion_preferida, Integer admin) {
+	public Usuario(Integer id_usuario, String nombre, Double presupuesto, Double tiempo, Integer atraccion_preferida, Integer admin, String password) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
@@ -20,6 +23,7 @@ public class Usuario {
 		this.atraccion_preferida = atraccion_preferida;
 		this.idItinerario = null;
 		this.admin = admin;
+		this.password=password;
 	}
 
 	// getter y setter de los atributos
@@ -79,11 +83,30 @@ public class Usuario {
 		this.admin = admin;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id_usuario + ", nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempo=" + tiempo
-				+ ", idItinerario=" + idItinerario + ", atraccion_preferida=" + atraccion_preferida + "]";
+		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempo="
+				+ tiempo + ", idItinerario=" + idItinerario + ", atraccion_preferida=" + atraccion_preferida
+				+ ", admin=" + admin + ", password=" + password + "]";
 	}
+
+	public boolean isNull() {
+		return false;
+	}
+	
+	public boolean checkPassword(String password) {
+		// this.password en realidad es el hash del password
+		return Crypt.match(password, this.password);
+	}
+
+	
 
 }
