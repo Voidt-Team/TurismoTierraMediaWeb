@@ -9,7 +9,7 @@ public class testhash {
 	@Test
 	public void test() {
 		Crypt  prueba=null;
-		System.out.println(prueba.hash("leo"));
+		System.out.println(prueba.hash("Sergio"));
 		
 	}
 
