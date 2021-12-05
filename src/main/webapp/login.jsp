@@ -45,7 +45,6 @@
 				type="password" class="form-control" name="password">
 		</div>
 
-<<<<<<< HEAD
 		<div class="d-grid gap-2">
 			<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
 		</div>
@@ -57,6 +56,5 @@
 					<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
 				</div>
 			</form>
->>>>>>> branch 'main' of https://github.com/Voidt-Team/TurismoTierraMediaWeb.git
 </body>
 </html>

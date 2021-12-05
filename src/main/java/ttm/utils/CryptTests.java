@@ -2,16 +2,17 @@ package ttm.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import ttm.utils.Crypt;
-
 public class CryptTests {
-	String password = "prueba";
-	String passwordIncorrecto = "pruebe";
+	String password = "Sergio";
+	String passwordIncorrecto = "Sergi0";
 
 	@Test
 	public void testHash() {
 		Object hashed = Crypt.hash(password);
+		
+		System.out.println(hashed.toString());
 		Assert.assertFalse(hashed.equals(password));
+		
 	}
 
 	@Test
