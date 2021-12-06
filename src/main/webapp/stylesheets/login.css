@@ -1,6 +1,7 @@
 
 body{
     background-color: #080710;
+    background-image: url("https://i.pinimg.com/originals/68/22/66/6822660075e34fca5cab0e04c9c7caec.jpg");
 }
 .background{
     width: 430px;
@@ -91,4 +92,13 @@ button{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+.alerta{
+	height: 20px;
+   	width: 300px;
+   	text-align: center;
+   	
+}
+p{
+	background-color: red;
 }

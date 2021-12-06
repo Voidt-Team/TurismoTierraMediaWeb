@@ -18,7 +18,7 @@ public class LoggedFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		Usuario user = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("user");
+		Usuario user = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
 		if (user != null) {
 			chain.doFilter(request, response);
 		} else {

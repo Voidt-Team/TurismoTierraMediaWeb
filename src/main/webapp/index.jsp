@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -8,8 +8,6 @@
 <%@page import="ttm.dao.UsuarioDAO"%>
 <%@page import="ttm.manager.UsuarioManager"%>
 
-
-<!DOCTYPE html>
 <html>
 <head>
 <!-- Required meta tags -->
@@ -36,17 +34,20 @@
 
 <link rel="stylesheet" type="text/css"
 	href="/ttm_web_voidteam/stylesheets/index.css" />
-
-
-<title>Turismo en la Tierra Media</title>
-<link rel="icon" type="image/png"
-	href="https://upload.wikimedia.org/wikipedia/commons/e/ef/One_ring.png" />
+	
+	<jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="nav.jsp"></jsp:include>
+
+
+
 	<div class="background">
+	
 		<div class="cuadro">
 			<h5>
-				Bienvenido <%= session.getAttribute("nombre") %> al Turismo en la Tierra Media!!!</h5>
+			
+				Bienvenido <c:out value="${usuario.nombre}"></c:out> al Turismo en la Tierra Media!!!</h5>
 			<br>¿Que actividad deseas hacer hoy?</br>
 
 			<%
@@ -69,38 +70,8 @@
 					value="Submit">Siguiente</button>
 			</div>
 		</div>
-		<br></br>
-		<div class="form">
-		
-			<%
-			//con este codigo me traigo el usuario logueado de la base...
-			UsuarioDAO usuDAO = new UsuarioDAO();
-			Usuario tempo = null;
-			String nombre=session.getAttribute("nombre").toString();
-			tempo = usuDAO.findByname(nombre); 
-			%>
-			
-			<div class="cuadro">
-			
-				<tr>
-					<td>Nombre:</td>
-					<td><input type="text" name="nombreusu" value="<%=tempo.getNombre()%>" readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>Presupuesto:</td>
-					<td><input type="text" name="presupuestousu" value="<%=tempo.getPresupuesto()%>" readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>Tiempo Disponible:</td>
-					<td><input type="text" name="tempousu" value="<%=tempo.getTiempo()%>" readonly="readonly"></td>
-				</tr>
-				
-			</div>
-		
-			
-		</div>
 
-
+		
 	</div>
 </body>
 </html>
