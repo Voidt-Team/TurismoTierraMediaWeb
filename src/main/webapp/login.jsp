@@ -10,12 +10,16 @@
 	rel="stylesheet">
 
 <link rel="stylesheet" type="text/css"
+	href="/ttm_web_voidteam/stylesheets/index.css" />
+
+<link rel="stylesheet" type="text/css"
 	href="/ttm_web_voidteam/stylesheets/login.css" />
 <title>Login - TTM</title>
 
 
 </head>
-<body>
+<body background="https://i.pinimg.com/originals/68/22/66/6822660075e34fca5cab0e04c9c7caec.jpg">
+
 
 	<c:if test="${flash != null}">
 		<div class="alert alert-danger">
@@ -24,14 +28,9 @@
 			</p>
 		</div>
 	</c:if>
-	
-	<div class="background">
-		<div class="shape"></div>
-		<div class="shape"></div>
-	</div>
 
 	<form action="login" method="post">
-		<h2 align=center>Bienvenidos a </h2>
+		<h1 align=center>Bienvenidos a</h1>
 		<h2 align=center>Turismo en la Tierra Media</h2>
 		<div class="mb-3">
 			<label for="nombre" class="form-label">Usuario</label> <input
@@ -48,6 +47,5 @@
 		</div>
 	</form>
 	
-	</form>
 </body>
 </html>

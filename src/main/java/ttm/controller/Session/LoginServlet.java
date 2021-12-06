@@ -34,15 +34,12 @@ public class LoginServlet extends HttpServlet {
     	String nombre = req.getParameter("nombre");
     	String password = req.getParameter("password");
     	
-    	//aparentemente esta aca el error...
     	Usuario user=null;
     	
-    	//aparentemente aca esta el error...
 		try {
 			user = loginService.login(nombre, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("error en loginservlet");
 			e.printStackTrace();
 		}
     	
