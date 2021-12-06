@@ -11,13 +11,10 @@ public class LoginService {
 		UsuarioDAO userDao = new UsuarioDAO();
     	Usuario user = userDao.findByname(nombre);
     	
-		
-		
 		/*
 		 * if (user.isNull() || !user.checkPassword(password)) { user =
 		 * NullUser.build(); }
 		 */
-		 
 		 
     	return user;
 	}
