@@ -41,8 +41,9 @@
 <body>
 <div class="background">
 	<div class="cuadro">
-			<h4>Bienvenido al Turismo en la Tierra Media!!!</h4>
-
+			<h5>Bienvenido <%= session.getAttribute("nombre") %> al Turismo en la Tierra Media!!!</h5>
+			<br>¿Que actividad deseas hacer hoy?</br>
+				
 			<%
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			List<Usuario> usuarios = new ArrayList<Usuario>();
