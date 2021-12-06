@@ -24,17 +24,15 @@
 			</p>
 		</div>
 	</c:if>
-
+	
 	<div class="background">
 		<div class="shape"></div>
 		<div class="shape"></div>
 	</div>
 
-
-
 	<form action="login" method="post">
-		<h2 align=center>BIENVENIDOS A</h2>
-		<h2 align=center>TURISMO EN LA TIERRA MEDIA</h2>
+		<h2 align=center>Bienvenidos a </h2>
+		<h2 align=center>Turismo en la Tierra Media</h2>
 		<div class="mb-3">
 			<label for="nombre" class="form-label">Usuario</label> <input
 				class="form-control" name="nombre">
@@ -49,12 +47,7 @@
 			<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
 		</div>
 	</form>
-
-
-=======
-				<div class="d-grid gap-2">
-					<button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
-				</div>
-			</form>
+	
+	</form>
 </body>
 </html>
