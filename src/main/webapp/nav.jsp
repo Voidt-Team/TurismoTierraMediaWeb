@@ -4,7 +4,11 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 
 				<a class="navbar-brand" href="index.jsp">Turismo en la Tierra Media   </a>
+				<c:if test="${usuario.isAdmin()}">
+					<a class="navbar-brand" href="/ttm_web_voidteam/vistas/administracion/index.jsp">Administracion</a>
+				</c:if>
 		</div>
+		
 		<div class="d-flex justify-content-end">
 					<i title="usuario" style="color: white;" class="bi bi-people-fill"><c:out value="${usuario.nombre}"></c:out></i>
 					<i title="separador" style="color: black" >"   "</i>

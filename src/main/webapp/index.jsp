@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -34,44 +34,17 @@
 
 <link rel="stylesheet" type="text/css"
 	href="/ttm_web_voidteam/stylesheets/index.css" />
-	
-	<jsp:include page="head.jsp"></jsp:include>
+
+<jsp:include page="head.jsp"></jsp:include>
 </head>
-<body>
-<jsp:include page="nav.jsp"></jsp:include>
+<body >
+	<jsp:include page="nav.jsp"></jsp:include>
 
 
 
 	<div class="background">
-	
-		<div class="cuadro">
-			<h5>
-			
-				Bienvenido <c:out value="${usuario.nombre}"></c:out> al Turismo en la Tierra Media!!!</h5>
-			<br>¿Que actividad deseas hacer hoy?</br>
 
-			<%
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			List<Usuario> usuarios = new ArrayList<Usuario>();
-			usuarios = usuarioDAO.findAll();
-			int option = 0;
-			%>
-			<select class="form-select form-select-lg mb-3">
-				<option selected>Seleccione un usuario</option>
-				<%for (Usuario usuario : usuarios) {
-					option++;%>
-				<option value=option>
-					<%=usuario.getNombre()%>
-				</option>
-				<% } %>
-			</select>
-			<div class="d-grid gap-2">
-				<button type="submit" class="btn btn-outline-secondary"
-					value="Submit">Siguiente</button>
-			</div>
-		</div>
 
-		
 	</div>
 </body>
 </html>

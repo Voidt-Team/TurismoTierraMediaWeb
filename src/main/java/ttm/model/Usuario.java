@@ -107,6 +107,13 @@ public class Usuario {
 		return Crypt.match(password, this.password);
 	}
 
-	
+	public boolean isAdmin() {
+		if (admin == 1){
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 
 }
