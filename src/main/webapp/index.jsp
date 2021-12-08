@@ -37,13 +37,46 @@
 
 <jsp:include page="head.jsp"></jsp:include>
 </head>
-<body >
+<body>
+	
+	<div class="bd-example">
 	<jsp:include page="nav.jsp"></jsp:include>
+	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
-
+			<div class="carousel-inner">
+				<c:forEach items="${farmacias}" var="farm">
+					<c:if test="${ farm.id eq 11}">
+						<div class="carousel-item active">
+					</c:if>
+					<c:if test=	"${farm.id ne 11}">
+						<div class="carousel-item">
+					</c:if>
+						<img src="imagenes/moria.jpeg"
+							class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+							width="800" height="400" alt="${farm.nombre }">
+						<div class="carousel-caption d-none d-md-block">
+							<h5>
+								<c:out value="${farm.nombre }"></c:out>
+							</h5>
+							<p>${farm.direccion }</p>
+						</div>
+					</div>
+				</c:forEach>
+				<a class="carousel-control-prev" href="#carouselExampleCaptions"
+					role="button" data-bs-slide="prev"> <span
+					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Anterior</span>
+				</a> <a class="carousel-control-next" href="#carouselExampleCaptions"
+					role="button" data-bs-slide="next"> <span
+					class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Siguiente</span>
+				</a>
+			</div>
+		</div>
 
 	<div class="background">
-
+		<!-- en el tp de los profes hay un ejemplo de como listarlas con un for each -->
+		<!-- aca deberian ir las atraciones y  promociones que puede comprar el usuario -->
 
 	</div>
 </body>

@@ -37,44 +37,14 @@
 
 <jsp:include page="/head.jsp"></jsp:include>
 </head>
-<body>
-	<jsp:include page="/nav.jsp"></jsp:include> 
+<body >
+	<jsp:include page="/nav.jsp"></jsp:include>
 
-<!-- aca solo es una cuarto intermedio para que el admin elija que editar -->
+<!-- en esta pagina alistaremos los usuarios que puede editar el admin
+invocaremos los abm correspondiente -->
 
 	<div class="background">
 
-			<c:if test="${usuario.isAdmin()}">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Gestionar usuarios</h5>
-								<p class="card-text">Alta, baja y modificaciones de usuarios</p>
-								<a href="/ttm_web_voidteam/vistas/usuarios/index.jsp" class="btn btn-primary">Ir</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Gestionar Atracciones</h5>
-								<p class="card-text">ABM de las atracciones</p>
-								<a href="/ttm_web_voidteam/vistas/atracciones/index.jsp" class="btn btn-primary">Ir</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Volver al mercado</h5>
-								<p class="card-text">Mercado de promociones y atracciones sugeridas para usted</p>
-								<a href="/ttm_web_voidteam/index.jsp" class="btn btn-primary">Ir</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:if>
 
 	</div>
 </body>
