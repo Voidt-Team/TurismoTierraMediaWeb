@@ -9,8 +9,10 @@ public class Atraccion {
 	private Double tiempo;
 	private Integer cupo;
 	private Integer tipo_atraccion;
+	private String descripcion;
+	private String imagen;
 
-	public Atraccion(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion) {
+	public Atraccion(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -18,6 +20,9 @@ public class Atraccion {
 		this.tiempo = tiempo;
 		this.cupo = cupo;
 		this.tipo_atraccion = tipo_atraccion;
+		this.descripcion=descripcion;
+		this.imagen=imagen;
+		
 	} 
 
 	public String getNombre() {
@@ -49,12 +54,30 @@ public class Atraccion {
 	public Integer getTipo_atraccion() {
 		return tipo_atraccion;
 	}
-	
-	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	@Override
 	public String toString() {
 		return "Atraccion [id=" + id + ", nombre=" + nombre + ", costo=" + costo + ", tiempo=" + tiempo + ", cupo="
-				+ cupo + ", tipo_atraccion=" + tipo_atraccion + "]";
+				+ cupo + ", tipo_atraccion=" + tipo_atraccion + ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ "]";
 	}
-
+	
+	
+	
 }

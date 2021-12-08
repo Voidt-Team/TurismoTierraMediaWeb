@@ -37,14 +37,12 @@
 
 <jsp:include page="/head.jsp"></jsp:include>
 </head>
-<body >
+<body>
 	<jsp:include page="/nav.jsp"></jsp:include>
-
-<!-- en esta pagina alistaremos las atracciones y/o promociones que puede hacer el usuario
-tal vez promo y abajo atracciones -->
 
 	<div class="background">
 
+	<!-- abm de atracciones... -->
 
 	</div>
 </body>

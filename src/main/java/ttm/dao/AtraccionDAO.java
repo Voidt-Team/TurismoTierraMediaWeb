@@ -121,8 +121,10 @@ public class AtraccionDAO {
 		Double tiempo = resultSet.getDouble("tiempo");
 		Integer cupo = resultSet.getInt("cupo");
 		Integer tipo_atraccion = resultSet.getInt("id_tipo_de_atraccion");
+		String descripcion = resultSet.getString("descripcion");
+		String imagen = resultSet.getString("imagen");
 
-		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion);
+		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion,descripcion,imagen);
 	}
 
 	//Insert de atraccion
