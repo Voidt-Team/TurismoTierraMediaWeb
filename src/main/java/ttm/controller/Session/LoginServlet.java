@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -9218809313895615851L;
 	
 	private LoginService loginService;
-
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
     	String password = req.getParameter("password");
     	
     	Usuario user=null;
-    	
 		try {
 			user = loginService.login(nombre, password);
 		} catch (SQLException e) {
@@ -45,8 +44,9 @@ public class LoginServlet extends HttpServlet {
     	
     	if (!user.isNull()) {
     		req.getSession().setAttribute("usuario", user);
-			//resp.sendRedirect("/ttm_web_voidteam/attractions/index.do"); /* aca invoca la pagina principal generica */ 
-    		resp.sendRedirect("index.jsp");
+    		
+			resp.sendRedirect("/ttm_web_voidteam/attractions/index.do"); /* aca invoca la pagina principal generica */ 
+    		//resp.sendRedirect("index.jsp");
        	} else {
     		req.setAttribute("flash", "Nombre de usuario o contraseña incorrectos");
     		

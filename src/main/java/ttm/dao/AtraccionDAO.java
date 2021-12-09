@@ -112,6 +112,24 @@ public class AtraccionDAO {
 		return atraccion;
 	}
 	
+	// lista de atracciones
+		public List<Atraccion> findAll() throws SQLException {
+			List<Atraccion> atracciones = new ArrayList<Atraccion>();
+			Connection connection = ConnectionProvider.getConnection();
+			
+			String query = "SELECT * FROM atracciones ";
+
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Atraccion atraccion = toAtraccion(resultSet);
+				atracciones.add(atraccion);
+			}
+			return atracciones;
+		}
+	
 	
 	// este metodo se encarga de crear un objeto con los resultados de la consulta
 	public Atraccion toAtraccion(ResultSet resultSet) throws SQLException {

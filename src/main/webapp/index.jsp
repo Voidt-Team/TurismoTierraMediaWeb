@@ -32,9 +32,6 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
 	rel="stylesheet">
 
-<link rel="stylesheet" type="text/css"
-	href="/ttm_web_voidteam/stylesheets/index.css" />
-
 <jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
@@ -75,39 +72,36 @@
 		</div>
 	</div>
 
-	<div class="background" href="">
+	<div>
+
 		<!-- en el tp de los profes hay un ejemplo de como listarlas con un for each -->
 		<!-- aca deberian ir las atraciones y  promociones que puede comprar el usuario -->
-
-		<%-- <table class="table table-stripped table-hover">
-			<thead>
-				<tr>
-					<th>Atracci&oacute;n</th>
-					<th>Costo</th>
-					<th>Duraci&oacute;n</th>
-					<th>Cupo</th>
-					<th>Acciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${attractions}" var="attraction">
+		<div class="container" style="width:80%" align="center">
+			<table class="table table-stripped table-hover">
+				<thead>
 					<tr>
-						<td><strong><c:out value="${attraction.name}"></c:out></strong>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Cras pretium eros urna. Sed quis erat congue, bibendum tortor
-								malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
-						<td><c:out value="${attraction.cost}"></c:out></td>
-						<td><c:out value="${attraction.duration}"></c:out></td>
-						<td><c:out value="${attraction.capacity}"></c:out></td>
+						<th>Imagen</th>
+						<th>Atracci&oacute;n</th>
+						<th>Costo</th>
+						<th>Duraci&oacute;n</th>
+						<th>Cupo</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${listaAtracciones}" var="Atraccion">
+						<tr>
+							<td><img src="<c:out value="${Atraccion.imagen}"></c:out>" class="rounded-circle" width="75" height="75" alt="imagen"></td>
+							<td><strong><c:out value="${Atraccion.nombre}"></c:out></strong>
+								<p>
+									<c:out value="${Atraccion.descripcion}"></c:out>
+								</p></td>
+							<td><c:out value="${Atraccion.costo}"></c:out></td>
+							<td><c:out value="${Atraccion.tiempo}"></c:out></td>
+							<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
-						<td><c:if test="${user.admin}">
-								<a href="/turismo/attractions/edit.do?id=${attraction.id}"
-									class="btn btn-light rounded-0" role="button"><i
-									class="bi bi-pencil-fill"></i></a>
-								<a href="/turismo/attractions/delete.do?id=${attraction.id}"
-									class="btn btn-danger rounded" role="button"><i
-									class="bi bi-x-circle-fill"></i></a>
-							</c:if> <c:choose>
+							<td>
+							<c:choose>
 								<c:when
 									test="${user.canAfford(attraction) && user.canAttend(attraction) && attraction.canHost(1)}">
 									<a href="/turismo/attractions/buy.do?id=${attraction.id}"
@@ -118,11 +112,11 @@
 										role="button">No se puede comprar</a>
 								</c:otherwise>
 							</c:choose></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table> --%>
-
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
