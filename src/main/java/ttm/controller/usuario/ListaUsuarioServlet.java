@@ -2,7 +2,7 @@ package ttm.controller.usuario;
 
 import java.io.IOException;
 import java.util.List;
-
+/*
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletException;
@@ -10,8 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.User;
-import services.UserService;
+import ttm.model.Usuario;
+import ttm.services.*;
+
 
 @WebServlet("/users/index.do")
 public class ListaUsuarioServlet extends HttpServlet implements Servlet {
@@ -28,7 +29,7 @@ public class ListaUsuarioServlet extends HttpServlet implements Servlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		List<User> users = userService.list();
+		List<Usuario> users = userService.list();
 		req.setAttribute("users", users);
 
 		RequestDispatcher dispatcher = getServletContext()
@@ -37,4 +38,4 @@ public class ListaUsuarioServlet extends HttpServlet implements Servlet {
 
 	}
 
-}
+}*/

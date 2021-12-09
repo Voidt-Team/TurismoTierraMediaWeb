@@ -100,7 +100,7 @@
 							<td>
 							<c:choose>
 								<c:when
-									test="${usuario.canAfford(Atraccion) && user.canAttend(Atraccion) && Atraccion.canHost(1)}">
+									test="${usuario.tienedinero(Atraccion) && usuario.tienetiempo(Atraccion) && Atraccion.tienecupo(1)}">
 									<a href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
 										class="btn btn-success rounded" role="button">Comprar</a>
 								</c:when>

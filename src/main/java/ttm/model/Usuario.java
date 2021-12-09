@@ -107,11 +107,14 @@ public class Usuario {
 		return Crypt.match(password, this.password);
 	}
 
-	public boolean canAfford(Atraccion attraction) {
+	
+	//compara el dinero del usuario con el costo de la atraccion
+	public boolean tienedinero(Atraccion attraction) {
 		return attraction.getCosto() <= this.presupuesto;
 	}
 
-	public boolean canAttend(Atraccion attraction) {
+	//compara el tiempo del usuario con el de la atraccion
+	public boolean tienetiempo(Atraccion attraction) {
 		return attraction.getTiempo() <= this.tiempo;
 	}
 	

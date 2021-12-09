@@ -1,19 +1,19 @@
 package ttm.services;
-
+/*
 import java.util.List;
 
-import model.Attraction;
-import model.User;
+import ttm.model.Atraccion;
+import ttm.model.Usuario;
 import persistence.AttractionDAO;
 import persistence.commons.DAOFactory;
-
+//falta modificar
 public class UsuarioService {
 
-	public List<User> list() {
+	public List<Usuario> list() {
 		return DAOFactory.getUserDAO().findAll();
 	}
 
-	public User create(String username, String password, Integer coins, Double time) {
+	public Usuario create(String username, String password, Integer coins, Double time) {
 		User user = new User(-1, username, password, coins, time, false);
 		user.setPassword(password);
 
@@ -24,4 +24,4 @@ public class UsuarioService {
 
 		return user;
 	}
-}
+}*/

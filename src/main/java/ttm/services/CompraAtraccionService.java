@@ -18,13 +18,13 @@ public class CompraAtraccionService {
 		Usuario user = userDAO.findById(userId);
 		Atraccion attraction = attractionDAO.findById(attractionId);
 
-		if (!attraction.canHost(1)) {
+		if (!attraction.tienecupo(1)) {
 			errors.put("attraction", "No hay cupo disponible");
 		}
-		if (!user.canAfford(attraction)) {
+		if (!user.tienedinero(attraction)) {
 			errors.put("user", "No tienes dinero suficiente");
 		}
-		if (!user.canAttend(attraction)) {
+		if (!user.tienetiempo(attraction)) {
 			errors.put("user", "No tienes tiempo suficiente");
 		}
 

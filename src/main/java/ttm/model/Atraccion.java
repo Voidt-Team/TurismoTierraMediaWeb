@@ -78,10 +78,12 @@ public class Atraccion {
 				+ "]";
 	}
 	
-	public boolean canHost(int i) {
+	public boolean tienecupo(int i) {
+		//devuelve true si es mayor
 		return cupo >= i;
 	}
 
+	//le disminuye el cupo
 	public void host(int i) {
 		this.cupo -= i;
 	}
