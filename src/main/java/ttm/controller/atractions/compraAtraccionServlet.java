@@ -17,10 +17,14 @@ import ttm.services.CompraAtraccionService;
 @WebServlet("/attractions/buy.do")
 public class compraAtraccionServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 3455721046062278592L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8394487074174932293L;
 	private CompraAtraccionService buyAttractionService;
 
-	@Override
+	@Override //inicializa el servicio
 	public void init() throws ServletException {
 		super.init();
 		this.buyAttractionService = new CompraAtraccionService();
@@ -31,7 +35,7 @@ public class compraAtraccionServlet extends HttpServlet {
 		UsuarioDAO userdao=new UsuarioDAO();;
 		Integer attractionId = Integer.parseInt(req.getParameter("id"));
 		
-		Usuario user = (Usuario) req.getSession().getAttribute("user");
+		Usuario user = (Usuario) req.getSession().getAttribute("usuario");
 		Map<String, String> errors = null;
 		try {
 			errors = buyAttractionService.buy(user.getId(), attractionId);

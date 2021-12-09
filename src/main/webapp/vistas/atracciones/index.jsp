@@ -93,18 +93,6 @@
 								<td><c:out value="${Atraccion.tiempo}"></c:out></td>
 								<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
-								<%-- 					<td><c:choose>
-									<c:when
-										test="${usuario.tienedinero(Atraccion) && usuario.tienetiempo(Atraccion) && Atraccion.tienecupo(1)}">
-										<a
-											href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
-											class="btn btn-success rounded" role="button">Comprar</a>
-									</c:when>
-									<c:otherwise>
-										<a href="#" class="btn btn-secondary rounded disabled"
-											role="button">No se puede comprar</a>
-									</c:otherwise>
-								</c:choose></td> --%>
 
 								<%-- <td><c:if
 								test="${usuario.admin && (!tmp_user.admin || tmp_user.id_usuario == usuario.id_usuario)}">
