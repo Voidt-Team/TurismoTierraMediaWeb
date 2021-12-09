@@ -1,19 +1,22 @@
 package ttm.services;
-/*
+
+import java.sql.SQLException;
 import java.util.List;
 
 import ttm.model.Atraccion;
 import ttm.model.Usuario;
-import persistence.AttractionDAO;
-import persistence.commons.DAOFactory;
-//falta modificar
+import ttm.dao.UsuarioDAO;
+
+
 public class UsuarioService {
-
-	public List<Usuario> list() {
-		return DAOFactory.getUserDAO().findAll();
+	
+	private UsuarioDAO userdao=new UsuarioDAO();
+	
+	public List<Usuario> list() throws SQLException {
+		return userdao.listaUsuario();
 	}
-
-	public Usuario create(String username, String password, Integer coins, Double time) {
+	//falta modificar
+	/*public Usuario create(String username, String password, Integer coins, Double time) {
 		User user = new User(-1, username, password, coins, time, false);
 		user.setPassword(password);
 
@@ -23,5 +26,5 @@ public class UsuarioService {
 		}
 
 		return user;
-	}
-}*/
+	}*/
+}

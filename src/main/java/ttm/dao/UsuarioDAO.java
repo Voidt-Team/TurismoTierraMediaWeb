@@ -104,6 +104,22 @@ public class UsuarioDAO {
 		return usuario;
 	}
 
+	// este metodo devuelve una lista con todos los usuarios...
+		public List<Usuario> listaUsuario() throws SQLException {
+			List<Usuario> usuarios = new ArrayList<Usuario>();
+			Connection connection = ConnectionProvider.getConnection();
+
+			String query = "SELECT * FROM usuarios";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Usuario usuario = toUsuario(resultSet);
+				usuarios.add(usuario);
+			}
+			return usuarios;
+		}
 	
 	// este metodo se encarga de llamar al constructor con los resultados de la consulta
 	public Usuario toUsuario(ResultSet resultSet) throws SQLException {
