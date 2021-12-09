@@ -52,10 +52,15 @@
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>
-							<c:out value="${atraccion.nombre }"></c:out>
-						</h5>
-						<p>${atraccion.costo }</p>
+						<button type="button" class="btn btn-secondary btn-lg disabled">
+							<c:out value="${atraccion.nombre }"></c:out><br><c:out value="${atraccion.costo }"></c:out>
+						</button>
+						<%-- <div style="background-color:white">
+							<h4 style="color:black">
+								<c:out value="${atraccion.nombre }"></c:out>
+							</h4>
+							<h5 style="color:black">${atraccion.costo }</h5>
+						</div>	 --%>
 					</div>
 			</div>
 			</c:forEach>
