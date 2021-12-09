@@ -40,11 +40,64 @@
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include>
 
-	<div class="background">
+	<div>
+		<div class="container" style="width: 95%" align="center">
+			<table class="table table-stripped table-hover">
+				<thead>
+					<tr>
+						<th>Imagen</th>
+						<th>Atracci&oacute;n</th>
+						<th>Costo</th>
+						<th>Duraci&oacute;n</th>
+						<th>Cupo</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${listaAtracciones}" var="Atraccion">
+						<tr>
+							<td><img src="<c:out value="${Atraccion.imagen}"></c:out>"
+								class="rounded-circle" width="75" height="75" alt="imagen"></td>
+							<td><strong><c:out value="${Atraccion.nombre}"></c:out></strong>
+								<p>
+									<c:out value="${Atraccion.descripcion}"></c:out>
+								</p></td>
+							<td><c:out value="${Atraccion.costo}"></c:out></td>
+							<td><c:out value="${Atraccion.tiempo}"></c:out></td>
+							<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
-	<!-- abm de atracciones... -->
-
+		<%-- 					<td><c:choose>
+									<c:when
+										test="${usuario.tienedinero(Atraccion) && usuario.tienetiempo(Atraccion) && Atraccion.tienecupo(1)}">
+										<a
+											href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
+											class="btn btn-success rounded" role="button">Comprar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="#" class="btn btn-secondary rounded disabled"
+											role="button">No se puede comprar</a>
+									</c:otherwise>
+								</c:choose></td> --%>
+								
+								<%-- <td><c:if
+								test="${usuario.admin && (!tmp_user.admin || tmp_user.id_usuario == usuario.id_usuario)}">
+								<a href="/turismo/users/edit.do?id=${tmp_user.id_usuario}"
+									class="btn btn-light rounded-0" role="button"><i
+									class="bi bi-pencil-fill"></i></a>
+								<a href="/turismo/users/delete.do?id=${tmp_user.id_usuario}"
+									class="btn btn-danger rounded" role="button"><i
+									class="bi bi-x-circle-fill"></i></a>
+							</c:if></td> --%>
+								
+								
+								
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
+
 </body>
 </html>
 

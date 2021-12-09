@@ -51,7 +51,7 @@
 							<div class="card-body">
 								<h5 class="card-title">Gestionar usuarios</h5>
 								<p class="card-text">Alta, baja y modificaciones de usuarios</p>
-								<a href="/ttm_web_voidteam/vistas/usuarios/index.jsp" class="btn btn-primary">Ir</a>
+								<a href="/ttm_web_voidteam/usuarios/index.do" class="btn btn-primary">Ir</a>
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 							<div class="card-body">
 								<h5 class="card-title">Gestionar Atracciones</h5>
 								<p class="card-text">ABM de las atracciones</p>
-								<a href="/ttm_web_voidteam/vistas/atracciones/index.jsp" class="btn btn-primary">Ir</a>
+								<a href="/ttm_web_voidteam/attractions/index.do" class="btn btn-primary">Ir</a>
 							</div>
 						</div>
 					</div>
@@ -68,8 +68,8 @@
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title">Volver al mercado</h5>
-								<p class="card-text">Mercado de promociones y atracciones sugeridas para usted</p>
-								<a href="/ttm_web_voidteam/index.jsp" class="btn btn-primary">Ir</a>
+								<p class="card-text">Mercado de promociones y atracciones</p>
+								<a href="/ttm_web_voidteam/attractions/index.do" class="btn btn-primary">Ir</a>
 							</div>
 						</div>
 					</div>
