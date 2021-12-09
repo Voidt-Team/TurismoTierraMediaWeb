@@ -38,8 +38,7 @@
 
 	<div class="bd-example">
 		<jsp:include page="nav.jsp"></jsp:include>
-		<div id="carouselExampleCaptions" class="carousel slide"
-			data-bs-ride="carousel">
+		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
 			<div class="carousel-inner">
 				<c:forEach items="${listaAtracciones}" var="atraccion">
@@ -49,7 +48,7 @@
 					<c:if test="${atraccion.cupo ne 12}">
 						<div class="carousel-item">
 					</c:if>
-					<img src="src="<c:out value="${atraccion.imagen}"></c:out>"
+					<img src=<c:out value="${atraccion.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
 					<div class="carousel-caption d-none d-md-block">
