@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Atraccion;
 import ttm.services.AtraccionService;
 
-@WebServlet("/attractions/index.do")
-public class ListaAtraccionServlet extends HttpServlet implements Servlet {
+@WebServlet("/attractions/listado.do")
+public class ListadoAtraccionesServlet extends HttpServlet implements Servlet {
 
 	/**
 	 * 
@@ -38,12 +38,9 @@ public class ListaAtraccionServlet extends HttpServlet implements Servlet {
 			}
 			  req.setAttribute("listaAtracciones", listaAtracciones);
 		  
-			  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp"); 
+			  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/atracciones/index.jsp"); 
 			  dispatcher.forward(req, resp);
 		  
 		  }
-		  
-		  
-		 
 
 }

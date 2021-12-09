@@ -60,7 +60,7 @@
 							<div class="card-body">
 								<h5 class="card-title">Gestionar Atracciones</h5>
 								<p class="card-text">ABM de las atracciones</p>
-								<a href="/ttm_web_voidteam/attractions/index.do" class="btn btn-primary">Ir</a>
+								<a href="/ttm_web_voidteam/attractions/listado.do" class="btn btn-primary">Ir</a>
 							</div>
 						</div>
 					</div>
