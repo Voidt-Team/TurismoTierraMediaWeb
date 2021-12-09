@@ -107,6 +107,14 @@ public class Usuario {
 		return Crypt.match(password, this.password);
 	}
 
+	public boolean canAfford(Atraccion attraction) {
+		return attraction.getCosto() <= this.presupuesto;
+	}
+
+	public boolean canAttend(Atraccion attraction) {
+		return attraction.getTiempo() <= this.tiempo;
+	}
+	
 	public boolean isAdmin() {
 		if (admin == 1){
 			return true;

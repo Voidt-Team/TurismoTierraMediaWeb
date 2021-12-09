@@ -42,21 +42,21 @@
 			data-bs-ride="carousel">
 
 			<div class="carousel-inner">
-				<c:forEach items="${farmacias}" var="farm">
-					<c:if test="${ farm.id eq 11}">
+				<c:forEach items="${listaAtracciones}" var="atraccion">
+					<c:if test="${ atraccion.cupo eq 12}">
 						<div class="carousel-item active">
 					</c:if>
-					<c:if test="${farm.id ne 11}">
+					<c:if test="${atraccion.cupo ne 12}">
 						<div class="carousel-item">
 					</c:if>
-					<img src="imagenes/moria.jpeg"
+					<img src="src="<c:out value="${atraccion.imagen}"></c:out>"
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
-						width="800" height="400" alt="${farm.nombre }">
+						width="800" height="400" alt="${atraccion.nombre }">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>
-							<c:out value="${farm.nombre }"></c:out>
+							<c:out value="${atraccion.nombre }"></c:out>
 						</h5>
-						<p>${farm.direccion }</p>
+						<p>${atraccion.costo }</p>
 					</div>
 			</div>
 			</c:forEach>
@@ -73,10 +73,7 @@
 	</div>
 
 	<div>
-
-		<!-- en el tp de los profes hay un ejemplo de como listarlas con un for each -->
-		<!-- aca deberian ir las atraciones y  promociones que puede comprar el usuario -->
-		<div class="container" style="width:80%" align="center">
+		<div class="container" style="width:95%" align="center">
 			<table class="table table-stripped table-hover">
 				<thead>
 					<tr>
@@ -103,8 +100,8 @@
 							<td>
 							<c:choose>
 								<c:when
-									test="${user.canAfford(attraction) && user.canAttend(attraction) && attraction.canHost(1)}">
-									<a href="/turismo/attractions/buy.do?id=${attraction.id}"
+									test="${usuario.canAfford(Atraccion) && user.canAttend(Atraccion) && Atraccion.canHost(1)}">
+									<a href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
 										class="btn btn-success rounded" role="button">Comprar</a>
 								</c:when>
 								<c:otherwise>

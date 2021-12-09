@@ -78,6 +78,13 @@ public class Atraccion {
 				+ "]";
 	}
 	
-	
+	public boolean canHost(int i) {
+		return cupo >= i;
+	}
+
+	public void host(int i) {
+		this.cupo -= i;
+	}
+
 	
 }
