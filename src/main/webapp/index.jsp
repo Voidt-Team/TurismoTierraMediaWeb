@@ -51,10 +51,11 @@
 					<img src=<c:out value="${atraccion.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
-					<div class="carousel-caption d-none d-md-block">
-						<button type="button" class="btn btn-secondary btn-lg disabled">
-							<c:out value="${atraccion.nombre }"></c:out><br><c:out value="${atraccion.costo }"></c:out>
-						</button>
+					<div class="carousel-caption d-none d-md-block" style="opacity:0.5">
+						<div class="alert alert-success" role="alert">
+  							<h4 class="alert-heading"><c:out value="${atraccion.nombre }"></c:out><br><c:out value="${atraccion.costo }"></c:out></h4>
+  						</div>
+					
 						<%-- <div style="background-color:white">
 							<h4 style="color:black">
 								<c:out value="${atraccion.nombre }"></c:out>
