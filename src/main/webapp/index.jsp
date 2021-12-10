@@ -77,12 +77,16 @@
 		</div>
 	</div>
 
+
+
+<!-- atracciones -->
+
 	<div>
 		<div class="container" style="width:95%" align="center">
 			<table class="table table-stripped table-hover">
 				<thead>
 					<tr>
-						<th>Foto</th>
+						<th>Imagen</th>
 						<th>Atracci&oacute;n</th>
 						<th>Costo</th>
 						<th>Duraci&oacute;n</th>
@@ -120,6 +124,8 @@
 			</table>
 		</div>
 	</div>
+	
+	
 </body>
 </html>
 
