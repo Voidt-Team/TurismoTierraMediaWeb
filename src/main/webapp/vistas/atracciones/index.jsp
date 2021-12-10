@@ -72,7 +72,7 @@
 				<table class="table table-stripped table-hover">
 					<thead>
 						<tr>
-							<th>Imagen</th>
+							<th>Foto</th>
 							<th>Atracci&oacute;n</th>
 							<th>Costo</th>
 							<th>Duraci&oacute;n</th>
@@ -89,8 +89,8 @@
 									<p>
 										<c:out value="${Atraccion.descripcion}"></c:out>
 									</p></td>
-								<td><c:out value="${Atraccion.costo}"></c:out></td>
-								<td><c:out value="${Atraccion.tiempo}"></c:out></td>
+								<td>$ <c:out value="${Atraccion.costo}"></c:out></td>
+								<td><c:out value="${Atraccion.tiempo}"></c:out> hs.</td>
 								<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
 

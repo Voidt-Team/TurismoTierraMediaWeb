@@ -40,7 +40,7 @@
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include> 
 
-<!-- aca solo es una cuarto intermedio para que el admin elija que editar -->
+<!-- aca solo es un cuarto intermedio para que el admin elija que editar -->
 
 	<div class="background">
 
