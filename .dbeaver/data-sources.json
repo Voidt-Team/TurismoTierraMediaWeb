@@ -11,8 +11,7 @@
 				"database": "C:\\Users\\Sergito\\sergioNoir\\TurismoTierraMediaWeb\\src\\main\\database\\ttm_db.db",
 				"url": "jdbc:sqlite:C:\\Users\\Sergito\\sergioNoir\\TurismoTierraMediaWeb\\src\\main\\database\\ttm_db.db",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},
