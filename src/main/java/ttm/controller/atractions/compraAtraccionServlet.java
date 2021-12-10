@@ -17,7 +17,7 @@ import ttm.services.CompraAtraccionService;
 @WebServlet("/attractions/buy.do")
 public class compraAtraccionServlet extends HttpServlet {
 
-	
+	//servlet para cuando se compre una atraccion
 	/**
 	 * 
 	 */

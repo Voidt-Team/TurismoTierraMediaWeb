@@ -17,6 +17,8 @@ import ttm.services.AtraccionService;
 @WebServlet("/attractions/index.do")
 public class ListaAtraccionServlet extends HttpServlet implements Servlet {
 
+	
+	//este servlet genera la lista de atracciones a mostrar en el index para todos los usuarios
 	/**
 	 * 
 	 */

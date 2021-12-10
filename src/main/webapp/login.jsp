@@ -14,15 +14,24 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
 	rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<!-- google font... -->
+<link href="https://fonts.googleapis.com/css2?family=Kings&display=swap"
+	rel="stylesheet">
+<!-- /google font -->
 <link rel="stylesheet" type="text/css"
 	href="/ttm_web_voidteam/stylesheets/login.css" />
 <title>Login - TTM</title>
 
 <style>
 body {
-    background-image: url("https://i2.wp.com/elanillounico.com/wp-content/uploads/2015/11/Tierra-Media-vintage-Juan-M.-VillaSD.jpg");
- 
+	background-image:
+		url("https://i2.wp.com/elanillounico.com/wp-content/uploads/2015/11/Tierra-Media-vintage-Juan-M.-VillaSD.jpg");
+	background-size: 100% auto;
 }
 </style>
 </head>
@@ -30,18 +39,15 @@ body {
 
 	<form action="login" method="post">
 		<h1 align=center>Bienvenidos a</h1>
-		<h2 align=center>Turismo en la Tierra Media</h2>
-		
-		<div class="alerta">
-			<c:if test="${flash != null}">
-				<div class="w3-panel w3-red">
-					<p>
-						<c:out value="${flash}" />
-					</p>
-				</div>
-			</c:if>
-		</div>
-		
+		<h1 align=center>Turismo en la Tierra Media</h1>
+		<!-- <div class="alerta" > -->
+		<c:if test="${flash != null}">
+			<p style="color: white; opacity: 0.5" align="center">
+				<c:out value="${flash}" />
+			</p>
+		</c:if>
+
+
 
 		<div class="mb-3">
 			<label for="nombre" class="form-label">Usuario</label> <input

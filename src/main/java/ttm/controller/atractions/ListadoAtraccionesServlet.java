@@ -17,6 +17,8 @@ import ttm.services.AtraccionService;
 @WebServlet("/attractions/listado.do")
 public class ListadoAtraccionesServlet extends HttpServlet implements Servlet {
 
+	//este servlet es para editar las atracciones desde la pantalla del admin
+	
 	/**
 	 * 
 	 */

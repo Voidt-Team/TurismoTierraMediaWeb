@@ -1,9 +1,16 @@
 
 body{
+	/*no funciona en algunos browser*/
     background-color: #080710;
-    /* background-image: url("https://i2.wp.com/elanillounico.com/wp-content/uploads/2015/11/Tierra-Media-vintage-Juan-M.-VillaSD.jpg"); */
+    background-image: url("https://i2.wp.com/elanillounico.com/wp-content/uploads/2015/11/Tierra-Media-vintage-Juan-M.-VillaSD.jpg");
 	background-size:100% auto;
 }
+@font-face{
+	
+font-family: medieval;
+src: url(medieval.otf);
+}
+
 .background{
     width: 430px;
     height: 520px;
@@ -48,13 +55,18 @@ form{
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
+
 }
 form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
+	/*aca se edita las letras del form...*/
+    /* font-family: 'Poppins',sans-serif; */
+    font-size:x-large;
+    color:  #000000 ;
+    letter-spacing: 1px;
     outline: none;
     border: none;
+    font-family: 'Kings';
+    font-style: normal;
 }
 form h3{
     font-size: 32px;

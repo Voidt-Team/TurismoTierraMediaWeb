@@ -31,14 +31,16 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
 	rel="stylesheet">
-
+<link rel="stylesheet" type="text/css"
+	href="/ttm_web_voidteam/stylesheets/index.css" />
 <jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
 
 	<div class="bd-example">
 		<jsp:include page="nav.jsp"></jsp:include>
-		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+		<div id="carouselExampleCaptions" class="carousel slide"
+			data-bs-ride="carousel">
 
 			<div class="carousel-inner">
 				<c:forEach items="${listaAtracciones}" var="atraccion">
@@ -51,11 +53,16 @@
 					<img src=<c:out value="${atraccion.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
-					<div class="carousel-caption d-none d-md-block" style="opacity:0.5">
+					<div class="carousel-caption d-none d-md-block"
+						style="opacity: 0.5">
 						<div class="alert alert-success" role="alert">
-  							<h4 class="alert-heading"><c:out value="${atraccion.nombre }"></c:out><br><c:out value="${atraccion.costo }"></c:out></h4>
-  						</div>
-					
+							<h4 class="alert-heading">
+								<c:out value="${atraccion.nombre }"></c:out>
+								<br>
+								<c:out value="${atraccion.costo }"></c:out>
+							</h4>
+						</div>
+
 						<%-- <div style="background-color:white">
 							<h4 style="color:black">
 								<c:out value="${atraccion.nombre }"></c:out>
@@ -77,12 +84,24 @@
 		</div>
 	</div>
 
+	<!-- promociones -->
+	<div class="bg-light p-4 mb-3 rounded">
+		<div class=titulo>
+			<h1 align="center">Listado de Promociones</h1>
+		</div>
+
+	</div>
 
 
-<!-- atracciones -->
+	<!-- atracciones -->
+	<div class="bg-light p-4 mb-3 rounded">
+		<div class=titulo>
+			<h1 align="center">Listado de Atracciones</h1>
+		</div>
+	</div>
 
 	<div>
-		<div class="container" style="width:95%" align="center">
+		<div class="container" style="width: 95%" align="center">
 			<table class="table table-stripped table-hover">
 				<thead>
 					<tr>
@@ -97,7 +116,8 @@
 				<tbody>
 					<c:forEach items="${listaAtracciones}" var="Atraccion">
 						<tr>
-							<td><img src="<c:out value="${Atraccion.imagen}"></c:out>" class="rounded-circle" width="75" height="75" alt="imagen"></td>
+							<td><img src="<c:out value="${Atraccion.imagen}"></c:out>"
+								class="rounded-circle" width="75" height="75" alt="imagen"></td>
 							<td><strong><c:out value="${Atraccion.nombre}"></c:out></strong>
 								<p>
 									<c:out value="${Atraccion.descripcion}"></c:out>
@@ -106,26 +126,26 @@
 							<td><c:out value="${Atraccion.tiempo}"></c:out> hs.</td>
 							<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
-							<td>
-							<c:choose>
-								<c:when
-									test="${usuario.tienedinero(Atraccion) && usuario.tienetiempo(Atraccion) && Atraccion.tienecupo(1)}">
-									<a href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
-										class="btn btn-success rounded" role="button">Comprar</a>
-								</c:when>
-								<c:otherwise>
-									<a href="#" class="btn btn-secondary rounded disabled"
-										role="button">No se puede comprar</a>
-								</c:otherwise>
-							</c:choose></td>
+							<td><c:choose>
+									<c:when
+										test="${usuario.tienedinero(Atraccion) && usuario.tienetiempo(Atraccion) && Atraccion.tienecupo(1)}">
+										<a
+											href="/ttm_web_voidteam/attractions/buy.do?id=${Atraccion.id}"
+											class="btn btn-success rounded" role="button">Comprar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="#" class="btn btn-secondary rounded disabled"
+											role="button">No se puede comprar</a>
+									</c:otherwise>
+								</c:choose></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	
+
+
 </body>
 </html>
 

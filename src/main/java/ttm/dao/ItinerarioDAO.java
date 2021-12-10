@@ -16,6 +16,7 @@ import ttm.model.Usuario;
 
 public class ItinerarioDAO {
 	
+	//revisar porque ahroa hay mas campos en la tabla...
 	public void crearItinerario(Integer id_usuario, Integer id_atraccion, Integer promo_id) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 		String query = "INSERT or IGNORE INTO itinerarios(id_atraccion, promo_id, id_usuario) VALUES (?,?,?)";
@@ -28,6 +29,7 @@ public class ItinerarioDAO {
 		
 	}
 	
+	//revisar...
 	public void agregarAItinerario(Usuario usuario, Integer id_atraccion, Integer promo_id, Integer itinerario_id) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 		String query = "INSERT INTO itinerarios(id_atraccion, promo_id, id_usuario, id_itinerario) VALUES (?,?,?,?)";
@@ -64,6 +66,7 @@ public class ItinerarioDAO {
 	
 
 	//Se genera el objeto itinerario 
+	//ahora tiene mas campos la tabla...
 	public Itinerario toItinerario(ResultSet resultSet) throws SQLException {
 		Integer id_itinerario = resultSet.getInt("id_itinerario");
 		Integer id_atraccion = resultSet.getInt("id_atraccion");
@@ -74,10 +77,9 @@ public class ItinerarioDAO {
 	}
 
 
-	//Devuelve la lista de promociones del itinerario de un usuario
-	//solo esta guardando un precio, no la suma
-	public List<Promocion> buscarItinerarioPromociones(Integer itinerario_id) throws SQLException {
-		List<Promocion> promociones =  new ArrayList<Promocion>();
+	//devuelve lista de promociones compradas...
+	public List<Promocion> promocionesCompradas(Integer id_usuario) throws SQLException {
+		List<Promocion> promocionescompradas =  new ArrayList<Promocion>();
 		PromocionDAO promocionDAO = new PromocionDAO();
 		Connection connection = ConnectionProvider.getConnection();
 		
@@ -87,41 +89,35 @@ public class ItinerarioDAO {
 				+ "AND I.id_itinerario = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, itinerario_id);
+		preparedStatement.setInt(1, id_usuario);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		if (resultSet.next()) {
 			Promocion promocion = promocionDAO.toPromocion(resultSet);
-			promociones.add(promocion);
+			promocionescompradas.add(promocion);
 		}
-		return promociones;
+		return promocionescompradas;
 	}
-
-	//Devuelve la lista de promociones del itinerario de un usuario
-	//solo esta guardando un precio, no la suma
-	public List<Atraccion> buscarItinerarioAtracciones(Integer itinerario_id) throws SQLException {
-		List<Atraccion> atracciones =  new ArrayList<Atraccion>();
+	
+	//devuelve una lista de atracciones compradas...
+	public List<Atraccion> atraccionesCompradas(Integer id_usuario) throws SQLException {
+		List<Atraccion> atraccionescompradas =  new ArrayList<Atraccion>();
 		AtraccionDAO atraccionDAO = new AtraccionDAO();
 		Connection connection = ConnectionProvider.getConnection();
 		
-		String query = "SELECT DISTINCT A.* FROM atracciones A "
-				+ "INNER JOIN itinerarios I "
-				+ "WHERE A.id_atraccion = I.id_atraccion "
-				+ "AND I.promo_id <> 0"
-				+ "AND I.id_itinerario = ?";
+		String query = "select a.nombre, i.costo, i.tiempo "
+				+ "from atracciones a inner join itinerarios i inner join usuarios u "
+				+ "where i.id_atraccion = a.id_atraccion and u.id_usuario = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, itinerario_id);
+		preparedStatement.setInt(1, id_usuario);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		if (resultSet.next()) {
 			Atraccion atraccion = atraccionDAO.toAtraccion(resultSet);
-			atracciones.add(atraccion);
+			atraccionescompradas.add(atraccion);
 		}
-		return atracciones;
+		return atraccionescompradas;
 	}
-
-
-
 
 }
