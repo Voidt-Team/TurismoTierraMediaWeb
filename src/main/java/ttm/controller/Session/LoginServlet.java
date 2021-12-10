@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
     	if (!user.isNull()) {
     		req.getSession().setAttribute("usuario", user);
     		
-			resp.sendRedirect("/ttm_web_voidteam/attractions/index.do"); /* aca invoca la pagina principal generica */ 
+			resp.sendRedirect("/ttm_web_voidteam/attractions/index.do"); /* invoca a la pagina de atracciones */ 
        	} else {
     		req.setAttribute("flash", "Nombre de usuario o contraseña incorrectos");
     		
