@@ -63,7 +63,7 @@
 
 		<c:if test="${usuario.isAdmin()}">
 			<div class="mb-3">
-				<a href="<!-- /turismo/users/create.do -->" class="btn btn-primary"
+				<a href="/ttm_web_voidteam/users/create.do" class="btn btn-primary"
 					role="button"> <i class="bi bi-plus-lg"></i> Nuevo Usuario
 				</a>
 			</div>
@@ -92,15 +92,15 @@
 									Normal
 								</c:otherwise>
 							</c:choose></td>
-						<%-- <td><c:if
-								test="${usuario.admin && (!tmp_user.admin || tmp_user.id_usuario == usuario.id_usuario)}">
-								<a href="/turismo/users/edit.do?id=${tmp_user.id_usuario}"
+						<td><c:if
+								test="${usuario.admin}">
+								<a href="<%-- /turismo/users/edit.do?id=${tmp_user.id_usuario} --%>"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
-								<a href="/turismo/users/delete.do?id=${tmp_user.id_usuario}"
+								<a href="<%-- /turismo/users/delete.do?id=${tmp_user.id_usuario} --%>"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if></td> --%>
+							</c:if></td> 
 					</tr>
 				</c:forEach>
 			</tbody>

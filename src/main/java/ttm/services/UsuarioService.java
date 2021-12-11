@@ -3,7 +3,7 @@ package ttm.services;
 import java.sql.SQLException;
 import java.util.List;
 
-import ttm.model.Atraccion;
+
 import ttm.model.Usuario;
 import ttm.dao.UsuarioDAO;
 
@@ -15,16 +15,17 @@ public class UsuarioService {
 	public List<Usuario> list() throws SQLException {
 		return userdao.listaUsuario();
 	}
-	//falta modificar
-	/*public Usuario create(String username, String password, Integer coins, Double time) {
-		User user = new User(-1, username, password, coins, time, false);
+	
+	//no le genera un id itinerario porque se crea con la primer compra...
+	public Usuario create(String nombre, String password, Double presupuesto, Double tiempo,Integer admin) throws SQLException {
+		Usuario user = new Usuario(nombre, presupuesto, tiempo, password,admin);
 		user.setPassword(password);
 
+		UsuarioDAO miuser=new UsuarioDAO();
 		if (user.isValid()) {
-			DAOFactory.getUserDAO().insert(user);
-			// XXX: si no devuelve "1", es que hubo más errores
+			miuser.insert(user);
 		}
 
 		return user;
-	}*/
+	}
 }

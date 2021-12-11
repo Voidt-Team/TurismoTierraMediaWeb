@@ -1,5 +1,8 @@
 package ttm.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ttm.utils.Crypt;
 
 public class Usuario {
@@ -10,21 +13,36 @@ public class Usuario {
 	private Double presupuesto;
 	private Double tiempo;
 	private Integer idItinerario;
-	private Integer atraccion_preferida;
+	private Integer tipo_atraccion;
 	private Integer admin;
 	private String password;
+	private HashMap<String, String> errors;
 
-	public Usuario(Integer id_usuario, String nombre, Double presupuesto, Double tiempo, Integer atraccion_preferida, Integer admin, String password) {
+	public Usuario(Integer id_usuario, String nombre, Double presupuesto, Double tiempo, Integer tipo_atraccion, Integer admin, String password) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempo = tiempo;
-		this.atraccion_preferida = atraccion_preferida;
+		this.tipo_atraccion = tipo_atraccion;
 		this.idItinerario = null;
 		this.admin = admin;
 		this.password=password;
 	}
+	
+	
+	//datos que vienen del formulario
+	public Usuario(String nombre, Double presupuesto, Double tiempo, String password, Integer admin) {
+		super();
+		this.nombre = nombre;
+		this.presupuesto = presupuesto;
+		this.tiempo = tiempo;
+		this.password = password;
+		this.tipo_atraccion = 2;
+		this.admin=admin;
+	}
+
+
 
 	// getter y setter de los atributos
 	
@@ -61,18 +79,20 @@ public class Usuario {
 		this.idItinerario = idItinerario;
 	}
 
-	public Integer getAtraccion_preferida() {
-		return atraccion_preferida;
+
+	public Integer getTipo_atraccion() {
+		return tipo_atraccion;
 	}
 
-	public void setAtraccion_preferida(Integer atraccion_preferida) {
-		this.atraccion_preferida = atraccion_preferida;
+
+	public void setTipo_atraccion(Integer tipo_atraccion) {
+		this.tipo_atraccion = tipo_atraccion;
 	}
+
 
 	public Integer getId() {
 		return id_usuario;
 	}
-	
 	
 
 	public Integer getAdmin() {
@@ -91,12 +111,15 @@ public class Usuario {
 		this.password = password;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempo="
-				+ tiempo + ", idItinerario=" + idItinerario + ", atraccion_preferida=" + atraccion_preferida
-				+ ", admin=" + admin + ", password=" + password + "]";
+				+ tiempo + ", idItinerario=" + idItinerario + ", tipo_atraccion=" + tipo_atraccion + ", admin=" + admin
+				+ ", password=" + password + "]";
 	}
+
 
 	public boolean isNull() {
 		return false;
@@ -132,6 +155,26 @@ public class Usuario {
 			return false;
 		}
 		
+	}
+	
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (presupuesto < 0) {
+			errors.put("coins", "No debe ser negativo");
+		}
+		if (tiempo < 0) {
+			errors.put("time", "No debe ser negativo");
+		}
+	}
+	
+	public Map<String, String> getErrors() {
+		return errors;
 	}
 
 }
