@@ -28,13 +28,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-	
-	<!-- google font -->
+
+<!-- google font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
 	rel="stylesheet">
-	
-	<!-- /google font -->
+
+<!-- /google font -->
 
 <link rel="stylesheet" type="text/css"
 	href="/ttm_web_voidteam/stylesheets/index.css" />
@@ -48,8 +48,8 @@
 
 		<div class="bg-light p-4 mb-3 rounded">
 			<div class=titulo>
-			<h1 align="center">Promociones compradas</h1>
-		</div>
+				<h1 align="center">Promociones compradas</h1>
+			</div>
 		</div>
 
 
@@ -57,7 +57,7 @@
 			<div class="container" style="width: 95%" align="center">
 				<table class="table table-stripped table-hover">
 					<thead>
-					
+
 						<tr>
 							<th>Promoci&oacute;n</th>
 							<th>Costo</th>
@@ -73,6 +73,7 @@
 								<td><c:out value="${Promocion.tiempo}"></c:out> hs.</td>
 							</tr>
 						</c:forEach>
+						
 					</tbody>
 				</table>
 			</div>
@@ -81,8 +82,8 @@
 
 		<div class="bg-light p-4 mb-3 rounded">
 			<div class=titulo>
-			<h1 align="center">Atracciones compradas</h1>
-		</div>
+				<h1 align="center">Atracciones compradas</h1>
+			</div>
 		</div>
 
 
@@ -90,7 +91,7 @@
 			<div class="container" style="width: 95%" align="center">
 				<table class="table table-stripped table-hover">
 					<thead>
-					
+
 						<tr>
 							<th>Atracci&oacute;n</th>
 							<th>Costo</th>
