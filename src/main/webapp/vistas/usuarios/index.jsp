@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="ttm.model.Usuario"%>
 <%@page import="ttm.dao.UsuarioDAO"%>
-<%@page import="ttm.manager.UsuarioManager"%>
+
 
 <html>
 <head>
@@ -64,8 +64,7 @@
 		<c:if test="${usuario.isAdmin()}">
 			<div class="mb-3">
 				<a href="/ttm_web_voidteam/users/create.do" class="btn btn-primary"
-					role="button"> <i class="bi bi-plus-lg"></i> Nuevo Usuario
-				</a>
+					role="button"> <i class="bi bi-plus-lg"></i> Nuevo Usuario	</a>
 			</div>
 		</c:if>
 		<table class="table table-stripped table-hover">
@@ -94,7 +93,7 @@
 							</c:choose></td>
 						<td><c:if
 								test="${usuario.admin}">
-								<a href="<%-- /turismo/users/edit.do?id=${tmp_user.id_usuario} --%>"
+								<a href="/ttm_web_voidteam/usuario/edit.do?id=${tmp_user.id}"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
 								<a href="<%-- /turismo/users/delete.do?id=${tmp_user.id_usuario} --%>"

@@ -162,4 +162,23 @@ public class UsuarioDAO {
 			preparedStatement.executeUpdate();
 
 	}
+	
+	// update un usuario en la base de datos
+		public void modificar(Usuario nuevo) throws SQLException {
+
+				Connection connection = ConnectionProvider.getConnection();
+
+				String query = "UPDATE usuarios set nombre=?,presupuesto = ?, tiempo = ?,admin=?, id_tipo_de_atraccion=?,password=? WHERE id_usuario = ?";
+				
+				PreparedStatement preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, nuevo.getNombre());
+				preparedStatement.setDouble(2, nuevo.getPresupuesto());
+				preparedStatement.setDouble(3, nuevo.getTiempo());
+				preparedStatement.setInt(4, nuevo.getAdmin());
+				preparedStatement.setInt(5, nuevo.getTipo_atraccion());
+				preparedStatement.setString(6, nuevo.getPassword());
+				preparedStatement.setInt(7, nuevo.getId());
+				preparedStatement.executeUpdate();
+
+		}
 }
