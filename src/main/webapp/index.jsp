@@ -43,15 +43,15 @@
 			data-bs-ride="carousel">
 
 			<div class="carousel-inner">
-				<c:forEach items="${listaAtracciones}" var="atraccion">
-					<c:if test="${ atraccion.cupo eq 12}"><div class="carousel-item active"></c:if>
-					<c:if test="${atraccion.cupo ne 12}"><div class="carousel-item"></c:if>
-					<img src=<c:out value="${atraccion.imagen}"></c:out>
+				<c:forEach items="${juntas}" var="obj">
+					<c:if test="${obj.tiempo eq 5}"><div class="carousel-item active"></c:if>
+					<c:if test="${obj.tiempo ne 5}"><div class="carousel-item"></c:if>
+					<img src=<c:out value="${obj.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
-						width="800" height="400" alt="${atraccion.nombre }">
+						width="800" height="400" alt="${obj.nombre }">
 					<div class="carousel-caption d-none d-md-block">
 						<h4 style="color:"white">
-							<c:out value="${atraccion.nombre }"></c:out>
+							<c:out value="${obj.nombre }"></c:out>
 						</h4>
 					</div>
 			</div>

@@ -2,6 +2,7 @@ package ttm.controller.promocion;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import ttm.model.Atraccion;
 import ttm.model.Promocion;
 import ttm.services.PromocionService;
 
@@ -43,6 +45,19 @@ public class ListaPromocionServlet extends HttpServlet implements Servlet {
 		}
 
 		req.setAttribute("listaPromociones", listaPromociones);
+		List<Atraccion> latracciones = (List<Atraccion>) req.getAttribute("listaAtracciones");
+		List juntas = new ArrayList<>();
+		
+		for(Atraccion atrac:latracciones) {
+			System.out.println(atrac);
+			juntas.add(atrac);
+		}
+		for(Promocion prom:listaPromociones) {
+			System.out.println(prom);
+			juntas.add(prom);
+		}
+		req.setAttribute("juntas", juntas);
+		
 		// invoca al index para mostrar las listas
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
 		dispatcher.forward(req, resp);
