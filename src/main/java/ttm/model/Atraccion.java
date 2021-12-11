@@ -29,6 +29,19 @@ public class Atraccion {
 	} 
 	
 
+	public Atraccion(String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,
+			String descripcion, String imagen) {
+		super();
+		this.nombre = nombre;
+		this.costo = costo;
+		this.tiempo = tiempo;
+		this.cupo = cupo;
+		this.tipo_atraccion = tipo_atraccion;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+	}
+
+
 	public Atraccion(String nombre, Double costo, Double tiempo) {
 		super();
 		this.nombre = nombre;
