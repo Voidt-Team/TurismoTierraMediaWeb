@@ -2,7 +2,6 @@ package ttm.services;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import ttm.model.Atraccion;
 import ttm.dao.AtraccionDAO;
 
@@ -12,20 +11,20 @@ public class AtraccionService {
 		AtraccionDAO atracciondao=new AtraccionDAO();
 		return atracciondao.findAll();
 	}
-/*
-	public Attraction create(String name, Integer cost, Double duration, Integer capacity) {
-
-		Attraction attraction = new Attraction(name, cost, duration, capacity);
+	
+	public Atraccion create(String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) throws SQLException {
+		//metodo inicializador del objeto
+		Atraccion attraction = new Atraccion(nombre,costo,tiempo,cupo,tipo_atraccion,descripcion,imagen);
 
 		if (attraction.isValid()) {
-			AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
+			AtraccionDAO attractionDAO = new AtraccionDAO();
 			attractionDAO.insert(attraction);
-			// XXX: si no devuelve "1", es que hubo más errores
+			
 		}
 
 		return attraction;
 	}
-*/
+
 
 	public Atraccion update(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) throws SQLException {
 		

@@ -115,7 +115,7 @@
 
 		<c:if test="${usuario.isAdmin()}">
 			<div class="mb-3">
-				<a href="<!-- /turismo/users/create.do -->" class="btn btn-primary"
+				<a href="/ttm_web_voidteam/attractions/create.do" class="btn btn-primary"
 					role="button"> <i class="bi bi-plus-lg"></i> Nueva Atraccion
 				</a>
 			</div>
