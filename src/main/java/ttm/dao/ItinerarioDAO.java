@@ -16,29 +16,41 @@ import ttm.model.Usuario;
 
 public class ItinerarioDAO {
 	
-	//revisar porque ahroa hay mas campos en la tabla...
-	public void crearItinerario(Integer id_usuario, Integer id_atraccion, Integer promo_id) throws SQLException {
+
+	
+	//agregar compra atraccion
+	public void agregarAtraccionComprada(Integer id_usuario, Integer id_atraccion) throws SQLException {
+		AtraccionDAO miatraccion=new AtraccionDAO();
+		Atraccion atraSelect = miatraccion.findById(id_atraccion);
+		
 		Connection connection = ConnectionProvider.getConnection();
-		String query = "INSERT or IGNORE INTO itinerarios(id_atraccion, promo_id, id_usuario) VALUES (?,?,?)";
+		String query = "INSERT INTO itinerarios(id_itinerario,id_atraccion,id_usuario,costo,tiempo) VALUES (?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, id_atraccion);
-		preparedStatement.setInt(2, promo_id);
+		preparedStatement.setInt(1, id_usuario);
+		preparedStatement.setInt(2, id_atraccion);
 		preparedStatement.setInt(3, id_usuario);
+		preparedStatement.setDouble(4, atraSelect.getCosto());
+		preparedStatement.setDouble(4, atraSelect.getTiempo());
 		preparedStatement.executeUpdate();
 		
 	}
 	
-	//revisar...
-	public void agregarAItinerario(Usuario usuario, Integer id_atraccion, Integer promo_id, Integer itinerario_id) throws SQLException {
+	//agregar compra promocion
+	public void agregarPromocionComprada(Integer id_usuario, Integer promo_id) throws SQLException {
+		PromocionDAO mipromo=new PromocionDAO();
+		Promocion promoSelect = mipromo.findById(promo_id);
+		
 		Connection connection = ConnectionProvider.getConnection();
-		String query = "INSERT INTO itinerarios(id_atraccion, promo_id, id_usuario, id_itinerario) VALUES (?,?,?,?)";
+		
+		String query = "INSERT INTO itinerarios(id_itinerario,promo_id,id_usuario,costo,tiempo) VALUES (?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, id_atraccion);
+		preparedStatement.setInt(1, id_usuario);
 		preparedStatement.setInt(2, promo_id);
-		preparedStatement.setInt(3, usuario.getId());
-		preparedStatement.setInt(4, usuario.getIdItinerario());
+		preparedStatement.setInt(3, id_usuario);
+		preparedStatement.setDouble(4, promoSelect.getCosto());
+		preparedStatement.setDouble(4, promoSelect.getTiempo());
 		preparedStatement.executeUpdate();
 		
 	}
