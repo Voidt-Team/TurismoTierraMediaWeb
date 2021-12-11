@@ -53,15 +53,10 @@
 					<img src=<c:out value="${atraccion.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
-					<div class="carousel-caption d-none d-md-block"
-						style="opacity: 0.5">
-						<div class="alert alert-success" role="alert">
-							<h4 class="alert-heading">
-								<c:out value="${atraccion.nombre }"></c:out>
-								<br>
-								<c:out value="${atraccion.costo }"></c:out>
-							</h4>
-						</div>
+					<div class="carousel-caption d-none d-md-block">
+						<h4 style="color:"white">
+							<c:out value="${atraccion.nombre }"></c:out>
+						</h4>
 					</div>
 			</div>
 			</c:forEach>
@@ -116,11 +111,11 @@
 										test="${usuario.tienedinero(Promocion) && usuario.tienetiempo(Promocion)}">
 										<a
 											<%-- href="/ttm_web_voidteam/attractions/buy.do?id=${Promocion.id}" --%>
-											class="btn btn-success rounded" role="button">Comprar</a>
+											class="btn btn-success rounded" role="button" style="color:white">Comprar</a>
 									</c:when>
 									<c:otherwise>
 										<a href="#" class="btn btn-secondary rounded disabled"
-											role="button">No se puede comprar</a>
+											role="button" style="color:white">No se puede comprar</a>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
