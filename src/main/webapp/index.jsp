@@ -44,12 +44,8 @@
 
 			<div class="carousel-inner">
 				<c:forEach items="${listaAtracciones}" var="atraccion">
-					<c:if test="${ atraccion.cupo eq 12}">
-						<div class="carousel-item active">
-					</c:if>
-					<c:if test="${atraccion.cupo ne 12}">
-						<div class="carousel-item">
-					</c:if>
+					<c:if test="${ atraccion.cupo eq 12}"><div class="carousel-item active"></c:if>
+					<c:if test="${atraccion.cupo ne 12}"><div class="carousel-item"></c:if>
 					<img src=<c:out value="${atraccion.imagen}"></c:out>
 						class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 						width="800" height="400" alt="${atraccion.nombre }">
@@ -60,6 +56,7 @@
 					</div>
 			</div>
 			</c:forEach>
+			
 			<a class="carousel-control-prev" href="#carouselExampleCaptions"
 				role="button" data-bs-slide="prev"> <span
 				class="carousel-control-prev-icon" aria-hidden="true"></span> <span

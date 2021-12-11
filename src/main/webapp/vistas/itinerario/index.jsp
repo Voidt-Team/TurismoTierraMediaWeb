@@ -66,14 +66,22 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:set var="totcostopromo" value="${0}"/>
+						<c:set var="tottiempopromo" value="${0}"/>
 						<c:forEach items="${listaPromocionescompradas}" var="Promocion">
 							<tr>
 								<td><strong><c:out value="${Promocion.nombre}"></c:out></strong></td>
 								<td>$ <c:out value="${Promocion.costo}"></c:out></td>
 								<td><c:out value="${Promocion.tiempo}"></c:out> hs.</td>
+								<c:set var="totcostopromo" value="${totcostopromo + Promocion.costo}" />
+								<c:set var="tottiempopromo" value="${tottiempopromo + Promocion.tiempo}" />
 							</tr>
 						</c:forEach>
-						
+							<tr>
+								<td><strong>Total Gastado </strong></td>
+								<td><strong>$<c:out value="${totcostopromo}"></c:out></strong></td>
+								<td><strong><c:out value="${tottiempopromo}"></c:out> hs.</strong></td>
+							</tr>
 					</tbody>
 				</table>
 			</div>
@@ -100,16 +108,29 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:set var="totcosto" value="${0}"/>
+						<c:set var="tottiempo" value="${0}"/>
 						<c:forEach items="${listaAtraccionesCompradas}" var="Atraccion">
 							<tr>
 								<td><strong><c:out value="${Atraccion.nombre}"></c:out></strong></td>
 								<td>$ <c:out value="${Atraccion.costo}"></c:out></td>
 								<td><c:out value="${Atraccion.tiempo}"></c:out> hs.</td>
+								<c:set var="totcosto" value="${totcosto + Atraccion.costo}" />
+								<c:set var="tottiempo" value="${tottiempo + Atraccion.tiempo}" />
 							</tr>
 						</c:forEach>
+							<tr>
+								<td><strong>Total Gastado </strong></td>
+								<td><strong>$<c:out value="${totcosto}"></c:out></strong></td>
+								<td><strong><c:out value="${tottiempo}"></c:out> hs.</strong></td>
+							</tr>
+						
 					</tbody>
 				</table>
 			</div>
+		</div>
+		<div class="d-flex justify-content-end">
+		<button  type="button" class="btn btn-warning" onclick="javascript:window.print()">Imprimir</button>
 		</div>
 	</main>
 </body>
