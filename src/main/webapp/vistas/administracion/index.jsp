@@ -6,7 +6,6 @@
 <%@page import="java.util.List"%>
 <%@page import="ttm.model.Usuario"%>
 <%@page import="ttm.dao.UsuarioDAO"%>
-<%@page import="ttm.manager.UsuarioManager"%>
 
 <html>
 <head>

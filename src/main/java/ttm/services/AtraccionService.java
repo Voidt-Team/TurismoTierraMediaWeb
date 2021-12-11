@@ -57,7 +57,6 @@ public class AtraccionService {
 */
 	public Atraccion find(Integer id) throws SQLException {
 		AtraccionDAO atracciondao = new AtraccionDAO();
-		System.out.println("por salir de atraccion service con:"+atracciondao);
 		return atracciondao.findById(id);
 	}
 

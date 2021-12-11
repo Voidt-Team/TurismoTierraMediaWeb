@@ -6,7 +6,6 @@
 <%@page import="java.util.List"%>
 <%@page import="ttm.model.Usuario"%>
 <%@page import="ttm.dao.UsuarioDAO"%>
-<%@page import="ttm.manager.UsuarioManager"%>
 
 <html>
 <head>
@@ -95,12 +94,11 @@
 								<td><c:out value="${Promocion.bonificacion}"></c:out></td>
 
 
-								<td><c:if
-								test="${usuario.admin}">
-								<a href="<%-- /turismo/users/edit.do?id=${tmp_user.id_usuario} --%>"
+								<td><c:if test="${usuario.admin}">
+								<a href="/ttm_web_voidteam/promocion/edit.do?id=${Promocion.id}"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
-								<a href="<%-- /turismo/users/delete.do?id=${tmp_user.id_usuario} --%>"
+								<a href="<%-- /turismo/attractions/delete.do?id=${attraction.id} --%>"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
 							</c:if></td>

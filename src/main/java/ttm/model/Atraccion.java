@@ -146,9 +146,7 @@ public class Atraccion {
 		if (tiempo <= 0) {
 			errors.put("duration", "Debe ser positivo");
 		}
-		/*
-		 * if (tiempo > 60) { errors.put("duration", "Excede el tiempo máximo"); }
-		 */
+
 		if (cupo <= 0) {
 			errors.put("capacity", "Debe ser positivo");
 		}

@@ -2,7 +2,6 @@ package ttm.services;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import ttm.dao.PromocionDAO;
 import ttm.model.Promocion;
 
@@ -14,7 +13,7 @@ public class PromocionService {
 		PromocionDAO promociondao=new PromocionDAO();
 		return promociondao.findAll();
 	}
-/*
+	/*
 	public Attraction create(String name, Integer cost, Double duration, Integer capacity) {
 
 		Attraction attraction = new Attraction(name, cost, duration, capacity);
@@ -27,35 +26,36 @@ public class PromocionService {
 
 		return attraction;
 	}
+*/
 
-	public Attraction update(Integer id, String name, Integer cost, Double duration, Integer capacity) {
+	public Promocion update(Integer id, String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion,String descripcion, String imagen) throws SQLException {
+		PromocionDAO promoDAO = new PromocionDAO();
+		Promocion promo = promoDAO.findById(id);
 
-		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		Attraction attraction = attractionDAO.find(id);
+		promo.setNombre(nombre);
+		promo.setCosto(costo);
+		promo.setTiempo(tiempo);
+		promo.setTipo(tipo);
+		promo.setBonificacion(bonificacion);
+		promo.setDescripcion(descripcion);
+		promo.setImagen(imagen);
 
-		attraction.setName(name);
-		attraction.setCost(cost);
-		attraction.setDuration(duration);
-		attraction.setCapacity(capacity);
-
-		if (attraction.isValid()) {
-			attractionDAO.update(attraction);
-			// XXX: si no devuelve "1", es que hubo más errores
+		if (promo.isValid()) {
+			promoDAO.modificar(promo);
 		}
 
-		return attraction;
+		return promo;
 	}
-
+/*
 	public void delete(Integer id) {
 		Attraction attraction = new Attraction(id, null, null, null, null);
 
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
 		attractionDAO.delete(attraction);
 	}
-
-	public Attraction find(Integer id) {
-		return DAOFactory.getAttractionDAO().find(id);
-	}
 */
-
+	public Promocion find(Integer id) throws SQLException {
+		PromocionDAO promodao = new PromocionDAO();
+		return promodao.findById(id);
+	}
 }

@@ -1,4 +1,4 @@
-package ttm.controller.atractions;
+package ttm.controller.promocion;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,38 +9,39 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ttm.model.Atraccion;
-import ttm.services.AtraccionService;
+import ttm.model.Promocion;
+import ttm.services.PromocionService;
 
-@WebServlet("/attractions/edit.do")
-public class EditarAtraccionServlet extends HttpServlet {
 
-	//editar una atraccion...
+@WebServlet("/promocion/edit.do")
+public class EditarPromocionesServlet extends HttpServlet {
+
+	//editar una promocion...
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1067641124758904693L;
-	private AtraccionService attractionService;
+	private static final long serialVersionUID = -2456105416986716457L;
+	private PromocionService promoService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.attractionService = new AtraccionService();
+		this.promoService = new PromocionService();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 
-		Atraccion attraction = null;
+		Promocion mipromo = null;
 		try {
-			attraction = attractionService.find(id);
+			mipromo = promoService.find(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		req.setAttribute("attraction", attraction);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/atracciones/editarAtraccion.jsp");
+		req.setAttribute("promocion",mipromo);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/promociones/editarPromociones.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -51,27 +52,26 @@ public class EditarAtraccionServlet extends HttpServlet {
 		String nombre = req.getParameter("nombre");
 		Double costo = Double.parseDouble(req.getParameter("costo"));
 		Double tiempo = Double.parseDouble(req.getParameter("tiempo"));
-		Integer cupo = Integer.parseInt(req.getParameter("cupo"));
-		Integer tipoAtraccion = Integer.parseInt(req.getParameter("tipo"));
+		Integer tipo = Integer.parseInt(req.getParameter("tipo"));
+		Integer bonificacion = Integer.parseInt(req.getParameter("bonificacion"));
 		String descripcion = req.getParameter("descripcion");
 		String imagen = req.getParameter("imagen");
 
-		Atraccion attraction = null;
+		Promocion promo = null;
 		try {
-			
-			attraction = attractionService.update(id, nombre, costo, tiempo, cupo, tipoAtraccion, descripcion, imagen);
+			promo = promoService.update(id, nombre, costo, tiempo, tipo,bonificacion, descripcion, imagen);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		if (attraction.isValid()) {
+		if (promo.isValid()) {
 			resp.sendRedirect("/ttm_web_voidteam/attractions/listado.do");
 		} else {
-			req.setAttribute("attraction", attraction);
+			req.setAttribute("promocion", promo);
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/vistas/atracciones/editarAtraccion.jsp");
+					.getRequestDispatcher("/vistas/promciones/editarPromocion.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}
