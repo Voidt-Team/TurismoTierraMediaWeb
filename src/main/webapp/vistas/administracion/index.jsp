@@ -58,8 +58,8 @@
 					<div class="col-sm-4">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">Gestionar Atracciones</h5>
-								<p class="card-text">ABM de las atracciones</p>
+								<h5 class="card-title">Gestionar Actividades</h5>
+								<p class="card-text">Alta, baja y modificaciones de promociones y atracciones</p>
 								<a href="/ttm_web_voidteam/attractions/listado.do" class="btn btn-primary">Ir</a>
 							</div>
 						</div>

@@ -55,6 +55,62 @@
 				</p>
 			</div>
 		</c:if>
+		
+		<div class="bg-light p-4 mb-3 rounded">
+			<h1>Promociones</h1>
+		</div>
+
+		<c:if test="${usuario.isAdmin()}">
+			<div class="mb-3">
+				<a href="<!-- /turismo/users/create.do -->" class="btn btn-primary"
+					role="button"> <i class="bi bi-plus-lg"></i> Nueva Promocion
+				</a>
+			</div>
+		</c:if>
+
+		<div>
+			<div class="container" style="width: 95%" align="center">
+				<table class="table table-stripped table-hover">
+					<thead>
+						<tr>
+							<th>Imagen</th>
+							<th>Promoci&oacute;n</th>
+							<th>Costo</th>
+							<th>Duraci&oacute;n</th>
+							<th>Bonificacion</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${listaPromociones}" var="Promocion">
+							<tr>
+								<td><img src="<c:out value="${Promocion.imagen}"></c:out>"
+									class="rounded-circle" width="75" height="75" alt="imagen"></td>
+								<td><strong><c:out value="${Promocion.nombre}"></c:out></strong>
+									<p>
+										<c:out value="${Promocion.descripcion}"></c:out>
+									</p></td>
+								<td>$ <c:out value="${Promocion.costo}"></c:out></td>
+								<td><c:out value="${Promocion.tiempo}"></c:out> hs.</td>
+								<td><c:out value="${Promocion.bonificacion}"></c:out></td>
+
+
+								<td><c:if
+								test="${usuario.admin}">
+								<a href="<%-- /turismo/users/edit.do?id=${tmp_user.id_usuario} --%>"
+									class="btn btn-light rounded-0" role="button"><i
+									class="bi bi-pencil-fill"></i></a>
+								<a href="<%-- /turismo/users/delete.do?id=${tmp_user.id_usuario} --%>"
+									class="btn btn-danger rounded" role="button"><i
+									class="bi bi-x-circle-fill"></i></a>
+							</c:if></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
 		<div class="bg-light p-4 mb-3 rounded">
 			<h1>Atracciones</h1>
 		</div>
@@ -72,7 +128,7 @@
 				<table class="table table-stripped table-hover">
 					<thead>
 						<tr>
-							<th>Foto</th>
+							<th>Imagen</th>
 							<th>Atracci&oacute;n</th>
 							<th>Costo</th>
 							<th>Duraci&oacute;n</th>
@@ -94,15 +150,14 @@
 								<td><c:out value="${Atraccion.cupo}"></c:out></td>
 
 
-								<%-- <td><c:if
-								test="${usuario.admin && (!tmp_user.admin || tmp_user.id_usuario == usuario.id_usuario)}">
-								<a href="/turismo/users/edit.do?id=${tmp_user.id_usuario}"
+								<td><c:if test="${usuario.admin}">
+								<a href="/ttm_web_voidteam/attractions/edit.do?id=${Atraccion.id}"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
-								<a href="/turismo/users/delete.do?id=${tmp_user.id_usuario}"
+								<a href="<%-- /turismo/attractions/delete.do?id=${attraction.id} --%>"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if></td> --%>
+							</c:if></td>
 
 
 
