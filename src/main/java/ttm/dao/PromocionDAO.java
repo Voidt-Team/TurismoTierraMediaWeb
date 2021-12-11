@@ -154,6 +154,17 @@ public class PromocionDAO {
 			return new Promocion(id, nombre, costo, tiempo, tipo,bonificacion, lista_atracciones);
 		
 		}
+		
+		// este metodo se encarga de llamar al constructor con los resultados de la consulta
+				public Promocion toPromocionCorto(ResultSet resultSet) throws SQLException {
+				
+					String nombre = resultSet.getString("nombre");
+					Double costo = resultSet.getDouble("costo");
+					Double tiempo = resultSet.getDouble("tiempo");
+
+					return new Promocion(nombre, costo, tiempo);
+				
+				}
 
 		//Insert promocion
 		//Aca deberia hacerse las insersiones en la tabla Promocion_tiene_Atracciones tambien

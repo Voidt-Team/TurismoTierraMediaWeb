@@ -24,6 +24,15 @@ public class Promocion {
 
 
 
+	public Promocion(String nombre, Double costo, Double tiempo) {
+		super();
+		this.nombre = nombre;
+		this.costo = costo;
+		this.tiempo = tiempo;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}

@@ -15,7 +15,7 @@
 		<a class="navbar-brand"style="color:white;"><i style="color:white;"class="bi bi-people-fill"></i><c:out value="${usuario.nombre}"></c:out></a>
 		<a class="navbar-brand"style="color:gold;"><i style="color:gold;"class="bi bi-coin"></i><c:out value="${usuario.presupuesto}"></c:out> </a>
 		<a class="navbar-brand"style="color:#9cdfdf;"><i style="color:#9cdfdf;"class="bi bi-clock-fill"></i><c:out value="${usuario.tiempo}h"></c:out></a>
-		<a class="navbar-brand" href="/Itinerario">Itinerario</a> 
+		<a class="navbar-brand" href="/ttm_web_voidteam/itinerario/ACompras.do">Itinerario</a> 
 		<a class="navbar-brand" href="/ttm_web_voidteam/logout">Salir</a>
 	</div>
 </nav>

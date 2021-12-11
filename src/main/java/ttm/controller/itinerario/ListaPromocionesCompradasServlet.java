@@ -11,43 +11,43 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ttm.model.Atraccion;
+import ttm.model.Promocion;
 import ttm.model.Usuario;
-import ttm.services.ItinerarioAtraccionesService;
+import ttm.services.ItinerarioPromocionesService;
 
-@WebServlet("/itinerario/ACompras.do")
-public class ListaAtraccionesCompradasServlet extends HttpServlet implements Servlet {
+
+@WebServlet("/itinerario/PCompras.do")
+public class ListaPromocionesCompradasServlet extends HttpServlet implements Servlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -775197332438012340L;
+	private static final long serialVersionUID = 4609665199892700930L;
+	// este servlet genera la lista de promociones comprada por el usuario
 
-	// este servlet genera la lista de atracciones comprada por el usuario
-
-	private ItinerarioAtraccionesService itinerarioAtraccionService;
+	private ItinerarioPromocionesService itinerarioPromocionesService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.itinerarioAtraccionService = new ItinerarioAtraccionesService();
+		this.itinerarioPromocionesService = new ItinerarioPromocionesService();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Atraccion> listaAtraccionescompradas = null;
+		List<Promocion> listaPromocionescompradas = null;
 
 		Usuario user = (Usuario) req.getSession().getAttribute("usuario");
 		
 		try {
-			listaAtraccionescompradas = itinerarioAtraccionService.list(user.getId());
+			listaPromocionescompradas = itinerarioPromocionesService.list(user.getId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		req.setAttribute("listaAtraccionesCompradas", listaAtraccionescompradas);
+		req.setAttribute("listaPromocionescompradas", listaPromocionescompradas);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/itinerario/PCompras.do"); /* deberia invocar a promociones */
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/itinerario/index.jsp"); 
 		dispatcher.forward(req, resp);
 
 	}

@@ -144,6 +144,15 @@ public class AtraccionDAO {
 
 		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion,descripcion,imagen);
 	}
+	
+	public Atraccion toAtraccionCorto(ResultSet resultSet) throws SQLException {
+	
+		String nombre = resultSet.getString("nombre");
+		Double costo = resultSet.getDouble("costo");
+		Double tiempo = resultSet.getDouble("tiempo");
+
+		return new Atraccion(nombre, costo, tiempo);
+	}
 
 	//Insert de atraccion
 	public void insert(Atraccion nuevaAtraccion) throws SQLException {

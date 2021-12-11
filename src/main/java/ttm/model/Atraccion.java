@@ -24,6 +24,15 @@ public class Atraccion {
 		this.imagen=imagen;
 		
 	} 
+	
+
+	public Atraccion(String nombre, Double costo, Double tiempo) {
+		super();
+		this.nombre = nombre;
+		this.costo = costo;
+		this.tiempo = tiempo;
+	}
+
 
 	public String getNombre() {
 		return nombre;

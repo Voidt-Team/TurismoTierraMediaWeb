@@ -83,17 +83,16 @@ public class ItinerarioDAO {
 		PromocionDAO promocionDAO = new PromocionDAO();
 		Connection connection = ConnectionProvider.getConnection();
 		
-		String query = "SELECT DISTINCT P.* FROM promociones P "
-				+ "INNER JOIN itinerarios I "
-				+ "WHERE P.id_promocion = I.promo_id"
-				+ "AND I.id_itinerario = ?";
+		String query = "select p.nombre, i.costo, i.tiempo\r\n"
+				+ "from promociones p inner join itinerarios i inner join usuarios u \r\n"
+				+ "where i.promo_id = p.id_promocion and u.id_usuario = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_usuario);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
-		if (resultSet.next()) {
-			Promocion promocion = promocionDAO.toPromocion(resultSet);
+		while (resultSet.next()) {
+			Promocion promocion = promocionDAO.toPromocionCorto(resultSet);
 			promocionescompradas.add(promocion);
 		}
 		return promocionescompradas;
@@ -113,8 +112,8 @@ public class ItinerarioDAO {
 		preparedStatement.setInt(1, id_usuario);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
-		if (resultSet.next()) {
-			Atraccion atraccion = atraccionDAO.toAtraccion(resultSet);
+		while (resultSet.next()) {
+			Atraccion atraccion = atraccionDAO.toAtraccionCorto(resultSet);
 			atraccionescompradas.add(atraccion);
 		}
 		return atraccionescompradas;
