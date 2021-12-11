@@ -40,8 +40,6 @@ public class EditarAtraccionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		req.setAttribute("attraction", attraction);
-		System.out.println("antes de llamar a editar");
-		System.out.println(attraction);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/atracciones/editarAtraccion.jsp");
 		dispatcher.forward(req, resp);
 	}
@@ -51,7 +49,6 @@ public class EditarAtraccionServlet extends HttpServlet {
 		System.out.println("despues del formatraccion y del editar.. paso de modif base");
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("nombre");
-		//Double costo = Double.parseDouble(req.getParameter("cost"));
 		Double costo = Double.parseDouble(req.getParameter("costo"));
 		Double tiempo = Double.parseDouble(req.getParameter("tiempo"));
 		Integer cupo = Integer.parseInt(req.getParameter("cupo"));
@@ -61,7 +58,7 @@ public class EditarAtraccionServlet extends HttpServlet {
 
 		Atraccion attraction = null;
 		try {
-			System.out.println("antes de llamar al servicio update");
+			
 			attraction = attractionService.update(id, nombre, costo, tiempo, cupo, tipoAtraccion, descripcion, imagen);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -28,7 +28,7 @@ public class AtraccionService {
 */
 
 	public Atraccion update(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) throws SQLException {
-		System.out.println("dentro de update");
+		
 		AtraccionDAO attractionDAO = new AtraccionDAO();
 		Atraccion atraccion = attractionDAO.findById(id);
 

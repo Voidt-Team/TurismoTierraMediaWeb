@@ -180,7 +180,7 @@ public class AtraccionDAO {
 	//modifica la atraccion con los datos del form...
 	public void modificar(Atraccion atraccion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
-		System.out.println("por ejecutar sql...");
+		
 		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, id_tipo_de_atraccion = ?, descripcion= ?, imagen= ?  WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
