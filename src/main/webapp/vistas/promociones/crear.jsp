@@ -11,14 +11,14 @@
 
 	<main class="container">
 
-		<c:if test="${attraction != null && !attraction.isValid()}">
+		<c:if test="${promocion != null && !promocion.isValid()}">
 			<div class="alert alert-danger">
 				<p>Se encontraron errores al crear la atracción.</p>
 			</div>
 		</c:if>
 
-		<form action="/ttm_web_voidteam/attractions/create.do" method="post">
-			<jsp:include page="/vistas/atracciones/formAtraccion.jsp"></jsp:include>
+		<form action="/ttm_web_voidteam/promocion/create.do" method="post">
+			<jsp:include page="/vistas/promociones/formPromociones.jsp"></jsp:include>
 		</form>
 	</main>
 </body>

@@ -32,6 +32,19 @@ public class Promocion {
 	}
 
 
+	public Promocion(String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion, String descripcion,
+			String imagen) {
+		super();
+		this.nombre = nombre;
+		this.costo = costo;
+		this.tiempo = tiempo;
+		this.tipo = tipo;
+		this.bonificacion = bonificacion;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+	}
+
+
 	//se utiliza para mostrar en el itinerario...
 	public Promocion(String nombre, Double costo, Double tiempo) {
 		super();

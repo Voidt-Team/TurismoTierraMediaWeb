@@ -49,11 +49,11 @@ public class ListaPromocionServlet extends HttpServlet implements Servlet {
 		List juntas = new ArrayList<>();
 		
 		for(Atraccion atrac:latracciones) {
-			System.out.println(atrac);
+			
 			juntas.add(atrac);
 		}
 		for(Promocion prom:listaPromociones) {
-			System.out.println(prom);
+			
 			juntas.add(prom);
 		}
 		req.setAttribute("juntas", juntas);

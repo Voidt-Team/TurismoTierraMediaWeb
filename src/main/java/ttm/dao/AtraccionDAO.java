@@ -160,13 +160,13 @@ public class AtraccionDAO {
 		String query = "INSERT INTO atracciones(nombre, costo, tiempo, cupo, id_tipo_de_atraccion,descripcion,imagen) VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(2, nuevaAtraccion.getNombre());
-		preparedStatement.setDouble(3, nuevaAtraccion.getCosto());
-		preparedStatement.setDouble(4, nuevaAtraccion.getTiempo());
-		preparedStatement.setInt(5, nuevaAtraccion.getCupo());
-		preparedStatement.setInt(6, nuevaAtraccion.getTipo_atraccion());
-		preparedStatement.setString(2, nuevaAtraccion.getDescripcion());
-		preparedStatement.setString(2, nuevaAtraccion.getImagen());
+		preparedStatement.setString(1, nuevaAtraccion.getNombre());
+		preparedStatement.setDouble(2, nuevaAtraccion.getCosto());
+		preparedStatement.setDouble(3, nuevaAtraccion.getTiempo());
+		preparedStatement.setInt(4, nuevaAtraccion.getCupo());
+		preparedStatement.setInt(5, nuevaAtraccion.getTipo_atraccion());
+		preparedStatement.setString(6, nuevaAtraccion.getDescripcion());
+		preparedStatement.setString(7, nuevaAtraccion.getImagen());
 		preparedStatement.executeUpdate();
 
 	}

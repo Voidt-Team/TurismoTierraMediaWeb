@@ -13,20 +13,21 @@ public class PromocionService {
 		PromocionDAO promociondao=new PromocionDAO();
 		return promociondao.findAll();
 	}
-	/*
-	public Attraction create(String name, Integer cost, Double duration, Integer capacity) {
+	
+	public Promocion create(String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion, String descripcion,
+			String imagen) throws SQLException {
 
-		Attraction attraction = new Attraction(name, cost, duration, capacity);
+		Promocion promo = new Promocion(nombre,costo, tiempo, tipo, bonificacion, descripcion,imagen);
 
-		if (attraction.isValid()) {
-			AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-			attractionDAO.insert(attraction);
-			// XXX: si no devuelve "1", es que hubo más errores
+		if (promo.isValid()) {
+			PromocionDAO promoDAO = new PromocionDAO();
+			promoDAO.insert(promo);
+			
 		}
 
-		return attraction;
+		return promo;
 	}
-*/
+
 
 	public Promocion update(Integer id, String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion,String descripcion, String imagen) throws SQLException {
 		PromocionDAO promoDAO = new PromocionDAO();

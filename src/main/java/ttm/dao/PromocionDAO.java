@@ -105,20 +105,19 @@ public class PromocionDAO {
 	}
 
 	// Insert promocion
-	// Aca deberia hacerse las insersiones en la tabla Promocion_tiene_Atracciones
-	// tambien
 	public void insert(Promocion nuevaPromocion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "INSERT INTO promociones(id_promocion, nombre, costo, tiempo, tipo, bonificacion) VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO promociones(nombre, costo, tiempo, tipo, bonificacion,descripcion,imagen) VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, nuevaPromocion.getId());
-		preparedStatement.setString(2, nuevaPromocion.getNombre());
-		preparedStatement.setDouble(3, nuevaPromocion.getCosto());
-		preparedStatement.setDouble(4, nuevaPromocion.getTiempo());
-		preparedStatement.setInt(5, nuevaPromocion.getTipo());
-		preparedStatement.setInt(6, nuevaPromocion.getBonificacion());
+		preparedStatement.setString(1, nuevaPromocion.getNombre());
+		preparedStatement.setDouble(2, nuevaPromocion.getCosto());
+		preparedStatement.setDouble(3, nuevaPromocion.getTiempo());
+		preparedStatement.setInt(4, nuevaPromocion.getTipo());
+		preparedStatement.setInt(5, nuevaPromocion.getBonificacion());
+		preparedStatement.setString(6, nuevaPromocion.getDescripcion());
+		preparedStatement.setString(7, nuevaPromocion.getImagen());
 		preparedStatement.executeUpdate();
 
 	}
