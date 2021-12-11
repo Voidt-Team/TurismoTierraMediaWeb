@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
 	<div class="collapse navbar-collapse" id="navbarCollapse">
 
-		<a class="navbar-brand" href="index.jsp">Turismo en la Tierra
+		<a class="navbar-brand" style="color:white">Turismo en la Tierra
 			Media </a>
 		<c:if test="${usuario.isAdmin()}">
 			<a class="navbar-brand"
