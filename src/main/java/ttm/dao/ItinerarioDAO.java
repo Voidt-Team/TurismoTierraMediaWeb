@@ -11,7 +11,7 @@ import ttm.db.ConnectionProvider;
 import ttm.model.Atraccion;
 import ttm.model.Itinerario;
 import ttm.model.Promocion;
-import ttm.model.Usuario;
+
 
 
 public class ItinerarioDAO {
@@ -19,21 +19,18 @@ public class ItinerarioDAO {
 
 	
 	//agregar compra atraccion
-	public void agregarAtraccionComprada(Integer id_usuario, Integer id_atraccion) throws SQLException {
-		AtraccionDAO miatraccion=new AtraccionDAO();
-		Atraccion atraSelect = miatraccion.findById(id_atraccion);
+	public void agregarAtraccionComprada(Integer id_usuario, Atraccion atraSelect) throws SQLException {
 		
 		Connection connection = ConnectionProvider.getConnection();
 		String query = "INSERT INTO itinerarios(id_itinerario,id_atraccion,id_usuario,costo,tiempo) VALUES (?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_usuario);
-		preparedStatement.setInt(2, id_atraccion);
+		preparedStatement.setInt(2, atraSelect.getId());
 		preparedStatement.setInt(3, id_usuario);
 		preparedStatement.setDouble(4, atraSelect.getCosto());
-		preparedStatement.setDouble(4, atraSelect.getTiempo());
-		preparedStatement.executeUpdate();
-		
+		preparedStatement.setDouble(5, atraSelect.getTiempo());
+		preparedStatement.executeUpdate();	
 	}
 	
 	//agregar compra promocion

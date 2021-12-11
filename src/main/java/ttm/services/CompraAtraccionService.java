@@ -28,15 +28,10 @@ public class CompraAtraccionService {
 			errors.put("user", "No tienes tiempo suficiente");
 		}
 
-		/*if (errors.isEmpty()) {
-		 //creo que aca agrega al inventario la compra
-			user.addToItinerary(attraction);
-			attraction.host(1);
-			
-			//luego actualiza cupo de atraccion y dinero de usuario...
-			attractionDAO.update(attraction);
-			userDAO.update(user);
-		}*/
+		if (errors.isEmpty()) {
+			userDAO.CompraUsuario(user, attraction);
+			attractionDAO.actualizarAtraccion(attraction);
+		}
 
 		return errors;
 

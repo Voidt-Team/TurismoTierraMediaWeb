@@ -9,6 +9,7 @@ import java.util.List;
 
 
 import ttm.db.ConnectionProvider;
+import ttm.model.Atraccion;
 import ttm.model.Usuario;
 
 public class UsuarioDAO {
@@ -16,18 +17,23 @@ public class UsuarioDAO {
 	// Agregar aca querys para ABM de usuarios
 
 	// Actualiza todos los campos del usuario que compro una atraccion suelta
-	public void actualizarUsuario(Usuario usu, Integer itinerario_id) throws SQLException {
+	public void CompraUsuario(Usuario usu, Atraccion atrac) throws SQLException {
+		ItinerarioDAO itinerario=new ItinerarioDAO();
+		
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "UPDATE usuarios set presupuesto = ?, tiempo = ?, id_itinerario = ? " + "WHERE id = ?";
+		String query = "UPDATE usuarios set presupuesto = ?, tiempo = ?, id_itinerario = ? " + "WHERE id_usuario = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-		preparedStatement.setDouble(1, usu.getPresupuesto());
-		preparedStatement.setDouble(2, usu.getTiempo());
-		preparedStatement.setInt(3, itinerario_id);
+		preparedStatement.setDouble(1, usu.getPresupuesto()-atrac.getCosto());
+		preparedStatement.setDouble(2, usu.getTiempo()-atrac.getTiempo());
+		preparedStatement.setInt(3, usu.getId());
 		preparedStatement.setInt(4, usu.getId());
 		preparedStatement.executeUpdate();
+		
+		//invocamos el insert de itinerario
+		itinerario.agregarAtraccionComprada(usu.getId(), atrac);
 	}
 
 	// Actualiza todos los campos del usuario que compro una promo

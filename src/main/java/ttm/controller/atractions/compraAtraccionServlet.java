@@ -52,7 +52,7 @@ public class compraAtraccionServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		req.getSession().setAttribute("user", user2);
+		req.getSession().setAttribute("usuario", user2);
 
 		if (errors.isEmpty()) {
 			req.setAttribute("success", "¡Gracias por comprar!");
