@@ -98,8 +98,7 @@ public class AtraccionDAO {
 
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "SELECT A.* FROM atracciones A "
-				+ "WHERE A.id_atraccion = ?";
+		String query = "SELECT * FROM atracciones WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_atraccion);
@@ -178,11 +177,11 @@ public class AtraccionDAO {
 		//Asi no le agregamos campos a la tabla atracciones
 	}
 
-	//Modificar de atraccion
+	//modifica la atraccion con los datos del form...
 	public void modificar(Atraccion atraccion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
-
-		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, tipo_de_atraccion = ?  WHERE id_atraccion = ?";
+		System.out.println("por ejecutar sql...");
+		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, id_tipo_de_atraccion = ?, descripcion= ?, imagen= ?  WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -191,7 +190,9 @@ public class AtraccionDAO {
 		preparedStatement.setDouble(3, atraccion.getTiempo());
 		preparedStatement.setInt(4, atraccion.getCupo());
 		preparedStatement.setInt(5, atraccion.getTipo_atraccion());
-		preparedStatement.setInt(6, atraccion.getId());
+		preparedStatement.setString(6, atraccion.getDescripcion());
+		preparedStatement.setString(7, atraccion.getImagen());
+		preparedStatement.setInt(8, atraccion.getId());
 		preparedStatement.executeUpdate();
 		
 	}

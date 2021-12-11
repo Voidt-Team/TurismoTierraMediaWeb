@@ -32,6 +32,7 @@ public class CompraAtraccionService {
 		 //creo que aca agrega al inventario la compra
 			user.addToItinerary(attraction);
 			attraction.host(1);
+			
 			//luego actualiza cupo de atraccion y dinero de usuario...
 			attractionDAO.update(attraction);
 			userDAO.update(user);

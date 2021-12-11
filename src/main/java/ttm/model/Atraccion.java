@@ -1,5 +1,7 @@
 package ttm.model;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class Atraccion {
 
@@ -11,6 +13,7 @@ public class Atraccion {
 	private Integer tipo_atraccion;
 	private String descripcion;
 	private String imagen;
+	private Map<String, String> errors;
 
 	public Atraccion(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) {
 		super();
@@ -33,9 +36,16 @@ public class Atraccion {
 		this.tiempo = tiempo;
 	}
 
+	
+	
 
 	public String getNombre() {
 		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 
@@ -43,42 +53,66 @@ public class Atraccion {
 		return costo;
 	}
 
-	public double getTiempo() {
+
+	public void setCosto(Double costo) {
+		this.costo = costo;
+	}
+
+
+	public Double getTiempo() {
 		return tiempo;
 	}
 
 
-	public int getCupo() {
+	public void setTiempo(Double tiempo) {
+		this.tiempo = tiempo;
+	}
+
+
+	public Integer getCupo() {
 		return cupo;
 	}
 
-	public void setCupo(int cupo) {
+
+	public void setCupo(Integer cupo) {
 		this.cupo = cupo;
 	}
 
-	public Integer getId() {
-		return id;
-	}
 
 	public Integer getTipo_atraccion() {
 		return tipo_atraccion;
 	}
 
+
+	public void setTipo_atraccion(Integer tipo_atraccion) {
+		this.tipo_atraccion = tipo_atraccion;
+	}
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
+
 	public String getImagen() {
 		return imagen;
 	}
 
+
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
 
 	@Override
 	public String toString() {
@@ -96,6 +130,34 @@ public class Atraccion {
 	public void host(int i) {
 		this.cupo -= i;
 	}
+
+
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (costo <= 0) {
+			errors.put("cost", "Debe ser positivo");
+		}
+		if (tiempo <= 0) {
+			errors.put("duration", "Debe ser positivo");
+		}
+		/*
+		 * if (tiempo > 60) { errors.put("duration", "Excede el tiempo máximo"); }
+		 */
+		if (cupo <= 0) {
+			errors.put("capacity", "Debe ser positivo");
+		}
+	}
+	
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+
 
 	
 }

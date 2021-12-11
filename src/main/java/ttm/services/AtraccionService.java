@@ -25,34 +25,40 @@ public class AtraccionService {
 
 		return attraction;
 	}
+*/
 
-	public Attraction update(Integer id, String name, Integer cost, Double duration, Integer capacity) {
+	public Atraccion update(Integer id,String nombre, Double costo, Double tiempo, Integer cupo, Integer tipo_atraccion,String descripcion,String imagen) throws SQLException {
+		System.out.println("dentro de update");
+		AtraccionDAO attractionDAO = new AtraccionDAO();
+		Atraccion atraccion = attractionDAO.findById(id);
 
-		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		Attraction attraction = attractionDAO.find(id);
+		atraccion.setNombre(nombre);
+		atraccion.setCosto(costo);
+		atraccion.setTiempo(tiempo);
+		atraccion.setCupo(cupo);
+		atraccion.setTipo_atraccion(tipo_atraccion);
+		atraccion.setDescripcion(descripcion);
+		atraccion.setImagen(imagen);
 
-		attraction.setName(name);
-		attraction.setCost(cost);
-		attraction.setDuration(duration);
-		attraction.setCapacity(capacity);
-
-		if (attraction.isValid()) {
-			attractionDAO.update(attraction);
+		if (atraccion.isValid()) {
+			attractionDAO.modificar(atraccion);
 			// XXX: si no devuelve "1", es que hubo más errores
 		}
 
-		return attraction;
+		return atraccion;
 	}
-
+/*
 	public void delete(Integer id) {
 		Attraction attraction = new Attraction(id, null, null, null, null);
 
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
 		attractionDAO.delete(attraction);
 	}
-
-	public Attraction find(Integer id) {
-		return DAOFactory.getAttractionDAO().find(id);
-	}
 */
+	public Atraccion find(Integer id) throws SQLException {
+		AtraccionDAO atracciondao = new AtraccionDAO();
+		System.out.println("por salir de atraccion service con:"+atracciondao);
+		return atracciondao.findById(id);
+	}
+
 }
