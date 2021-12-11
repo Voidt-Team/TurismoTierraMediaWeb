@@ -10,6 +10,7 @@ import java.util.List;
 
 import ttm.db.ConnectionProvider;
 import ttm.model.Atraccion;
+import ttm.model.Promocion;
 import ttm.model.Usuario;
 
 public class UsuarioDAO {
@@ -37,17 +38,23 @@ public class UsuarioDAO {
 	}
 
 	// Actualiza todos los campos del usuario que compro una promo
-	public void actualizarUsuarioPromo(Usuario usu, Integer id_promo) throws SQLException {
+	public void CompraUsuario(Usuario usu, Promocion promo) throws SQLException {
+		ItinerarioDAO itinerario=new ItinerarioDAO();
+		
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "UPDATE usuarios set presupuesto = ?, tiempo = ?" + "WHERE id = ?";
+		String query = "UPDATE usuarios set presupuesto = ?, tiempo = ?, id_itinerario = ? " + "WHERE id_usuario = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-		preparedStatement.setDouble(1, usu.getPresupuesto());
-		preparedStatement.setDouble(2, usu.getTiempo());
+		preparedStatement.setDouble(1, usu.getPresupuesto()-promo.getCosto());
+		preparedStatement.setDouble(2, usu.getTiempo()-promo.getTiempo());
 		preparedStatement.setInt(3, usu.getId());
+		preparedStatement.setInt(4, usu.getId());
 		preparedStatement.executeUpdate();
+		
+		//invocamos el insert de itinerario
+		itinerario.agregarPromocionComprada(usu.getId(), promo);
 	}
 
 	// este metodo devuelve una lista con todos los usuarios que tienen presupuesto

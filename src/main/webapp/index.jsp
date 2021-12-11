@@ -109,8 +109,7 @@
 							<td><c:choose>
 									<c:when
 										test="${usuario.tienedinero(Promocion) && usuario.tienetiempo(Promocion)}">
-										<a
-											<%-- href="/ttm_web_voidteam/attractions/buy.do?id=${Promocion.id}" --%>
+										<a href="/ttm_web_voidteam/promocion/buy.do?id=${Promocion.id}"
 											class="btn btn-success rounded" role="button" style="color:white">Comprar</a>
 									</c:when>
 									<c:otherwise>

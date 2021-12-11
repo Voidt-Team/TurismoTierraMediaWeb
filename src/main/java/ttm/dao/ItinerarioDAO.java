@@ -30,9 +30,7 @@ public class ItinerarioDAO {
 	}
 
 	// agregar compra promocion
-	public void agregarPromocionComprada(Integer id_usuario, Integer promo_id) throws SQLException {
-		PromocionDAO mipromo = new PromocionDAO();
-		Promocion promoSelect = mipromo.findById(promo_id);
+	public void agregarPromocionComprada(Integer id_usuario, Promocion promo) throws SQLException {
 
 		Connection connection = ConnectionProvider.getConnection();
 
@@ -40,10 +38,10 @@ public class ItinerarioDAO {
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_usuario);
-		preparedStatement.setInt(2, promo_id);
+		preparedStatement.setInt(2, promo.getId());
 		preparedStatement.setInt(3, id_usuario);
-		preparedStatement.setDouble(4, promoSelect.getCosto());
-		preparedStatement.setDouble(4, promoSelect.getTiempo());
+		preparedStatement.setDouble(4, promo.getCosto());
+		preparedStatement.setDouble(5, promo.getTiempo());
 		preparedStatement.executeUpdate();
 
 	}
