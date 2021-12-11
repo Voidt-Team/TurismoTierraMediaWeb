@@ -135,11 +135,28 @@ public class PromocionDAO {
 		}
 		return atracciones;
 	}
+	
+	//todas las promos
+		public List<Promocion> findAll() throws SQLException {
+			List<Promocion> lpromociones = new ArrayList<Promocion>();
+			Connection connection = ConnectionProvider.getConnection();
+
+			String query = "select * from promociones";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Promocion promocion = toPromocion(resultSet);
+				lpromociones.add(promocion);
+			}
+			return lpromociones;
+		}
 
 	// este metodo se encarga de llamar al constructor con los resultados de la consulta
 		public Promocion toPromocion(ResultSet resultSet) throws SQLException {
 			List<Atraccion> lista_atracciones = new ArrayList<Atraccion>();
-			//AtraccionDAO atraccionExtraDAO = new AtraccionDAO();
 
 			Integer id = resultSet.getInt("id_promocion");
 			String nombre = resultSet.getString("nombre");
@@ -147,11 +164,13 @@ public class PromocionDAO {
 			Double tiempo = resultSet.getDouble("tiempo");
 			Integer tipo = resultSet.getInt("tipo");
 			Integer bonificacion = resultSet.getInt("bonificacion");
+			String descripcion = resultSet.getString("descripcion");
+			String imagen= resultSet.getString("imagen");
 
-			// Aca le asignamos el resultado de findAllAttractionsByPromoId a la lista de
-			// atracciones de la promo que se esta construyendo
+			// findAllAttractionsByPromoId trae la lista de atrcciones de la promo
 			lista_atracciones = findAllAttractionsByPromoId(id);
-			return new Promocion(id, nombre, costo, tiempo, tipo,bonificacion, lista_atracciones);
+			return new Promocion(id, nombre, costo, tiempo, tipo, bonificacion,
+					descripcion, imagen, lista_atracciones);
 		
 		}
 		

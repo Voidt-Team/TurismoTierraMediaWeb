@@ -9,9 +9,13 @@ public class Promocion {
 	protected Double tiempo;
 	protected Integer tipo;
 	protected Integer bonificacion;
+	private String descripcion;
+	private String imagen;
 	private List<Atraccion> lista_atracciones;
 	
-	public Promocion(Integer id, String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion, List<Atraccion> lista_atracciones) {
+
+	public Promocion(Integer id, String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion,
+			String descripcion, String imagen, List<Atraccion> lista_atracciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -19,11 +23,13 @@ public class Promocion {
 		this.tiempo = tiempo;
 		this.tipo = tipo;
 		this.bonificacion = bonificacion;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
 		this.lista_atracciones = lista_atracciones;
 	}
 
 
-
+	//se utiliza para mostrar en el itinerario...
 	public Promocion(String nombre, Double costo, Double tiempo) {
 		super();
 		this.nombre = nombre;
@@ -115,6 +121,40 @@ public class Promocion {
 		this.lista_atracciones = lista_atracciones;
 	}
 
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Promocion [id=" + id + ", nombre=" + nombre + ", costo=" + costo + ", tiempo=" + tiempo + ", tipo="
+				+ tipo + ", bonificacion=" + bonificacion + ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ ", lista_atracciones=" + lista_atracciones + "]";
+	}
+
+	
 
 
 	//Esto que esta aca deberia ir en la parte del ABM de promociones

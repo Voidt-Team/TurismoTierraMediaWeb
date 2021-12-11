@@ -39,8 +39,8 @@ public class ListaAtraccionServlet extends HttpServlet implements Servlet {
 				e.printStackTrace();
 			}
 			  req.setAttribute("listaAtracciones", listaAtracciones);
-		  
-			  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp"); /*deberia invocar a promociones*/
+			  //invoca al servlet que genera la lista de promociones...
+			  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/promocion/index.do"); 
 			  dispatcher.forward(req, resp);
 		  
 		  }

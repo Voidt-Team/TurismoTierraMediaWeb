@@ -108,14 +108,21 @@ public class Usuario {
 	}
 
 	
-	//compara el dinero del usuario con el costo de la atraccion
+	//corrobora si tiene dinero el usuario
 	public boolean tienedinero(Atraccion attraction) {
 		return attraction.getCosto() <= this.presupuesto;
+	}
+	
+	public boolean tienedinero(Promocion promo) {
+		return promo.getCosto() <= this.presupuesto;
 	}
 
 	//compara el tiempo del usuario con el de la atraccion
 	public boolean tienetiempo(Atraccion attraction) {
 		return attraction.getTiempo() <= this.tiempo;
+	}
+	public boolean tienetiempo(Promocion promo) {
+		return promo.getTiempo() <= this.tiempo;
 	}
 	
 	public boolean isAdmin() {

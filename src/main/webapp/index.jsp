@@ -36,7 +36,7 @@
 <jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
-
+<!-- Carrusel -->
 	<div class="bd-example">
 		<jsp:include page="nav.jsp"></jsp:include>
 		<div id="carouselExampleCaptions" class="carousel slide"
@@ -62,13 +62,6 @@
 								<c:out value="${atraccion.costo }"></c:out>
 							</h4>
 						</div>
-
-						<%-- <div style="background-color:white">
-							<h4 style="color:black">
-								<c:out value="${atraccion.nombre }"></c:out>
-							</h4>
-							<h5 style="color:black">${atraccion.costo }</h5>
-						</div>	 --%>
 					</div>
 			</div>
 			</c:forEach>
@@ -92,6 +85,50 @@
 
 	</div>
 
+	<div>
+		<div class="container" style="width: 95%" align="center">
+			<table class="table table-stripped table-hover">
+				<thead>
+					<tr>
+						<th>Imagen</th>
+						<th>Promoci&oacute;n</th>
+						<th>Costo</th>
+						<th>Duraci&oacute;n</th>
+						<th>Bonificaci&oacute;n</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${listaPromociones}" var="Promocion">
+						<tr>
+							<td><img src="<c:out value="${Promocion.imagen}"></c:out>"
+								class="rounded-circle" width="75" height="75" alt="imagen"></td>
+							<td><strong><c:out value="${Promocion.nombre}"></c:out></strong>
+								<p>
+									<c:out value="${Promocion.descripcion}"></c:out>
+								</p></td>
+							<td>$ <c:out value="${Promocion.costo}"></c:out></td>
+							<td><c:out value="${Promocion.tiempo}"></c:out> hs.</td>
+							<td><c:out value="${Promocion.bonificacion}"></c:out></td>
+
+							<td><c:choose>
+									<c:when
+										test="${usuario.tienedinero(Promocion) && usuario.tienetiempo(Promocion)}">
+										<a
+											<%-- href="/ttm_web_voidteam/attractions/buy.do?id=${Promocion.id}" --%>
+											class="btn btn-success rounded" role="button">Comprar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="#" class="btn btn-secondary rounded disabled"
+											role="button">No se puede comprar</a>
+									</c:otherwise>
+								</c:choose></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 	<!-- atracciones -->
 	<div class="bg-light p-4 mb-3 rounded">
