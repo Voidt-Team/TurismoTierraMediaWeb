@@ -2,7 +2,6 @@ package ttm.controller.promocion;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,32 +11,27 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Promocion;
 import ttm.services.PromocionService;
 
-
+//Sevlet para editar una promocion
 @WebServlet("/promocion/edit.do")
 public class EditarPromocionesServlet extends HttpServlet {
-
-	//editar una promocion...
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2456105416986716457L;
 	private PromocionService promoService;
 
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.promoService = new PromocionService();
 	}
 
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
-
 		Promocion mipromo = null;
 		try {
 			mipromo = promoService.find(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		req.setAttribute("promocion",mipromo);
@@ -45,9 +39,9 @@ public class EditarPromocionesServlet extends HttpServlet {
 		dispatcher.forward(req, resp);
 	}
 
+	//Post
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("nombre");
 		Double costo = Double.parseDouble(req.getParameter("costo"));
@@ -61,7 +55,6 @@ public class EditarPromocionesServlet extends HttpServlet {
 		try {
 			promo = promoService.update(id, nombre, costo, tiempo, tipo,bonificacion, descripcion, imagen);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

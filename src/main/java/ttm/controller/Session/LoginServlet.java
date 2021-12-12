@@ -3,7 +3,6 @@ package ttm.controller.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,16 +12,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Usuario;
 import ttm.services.LoginService;
 
+//Sevlet para el login
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	
-	/*
-	 * serial auto-generado...
-	 */
 	private static final long serialVersionUID = -9218809313895615851L;
-	
 	private LoginService loginService;
 	
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -38,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = loginService.login(nombre, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	

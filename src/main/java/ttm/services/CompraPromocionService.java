@@ -11,6 +11,7 @@ public class CompraPromocionService {
 	PromocionDAO promoDAO = new PromocionDAO();
 	UsuarioDAO userDAO = new UsuarioDAO();
 
+	//Service para comprar una promocion
 	public Map<String, String> buy(Integer userId, Integer promoiconId) throws SQLException {
 		Map<String, String> errors = new HashMap<String, String>();
 

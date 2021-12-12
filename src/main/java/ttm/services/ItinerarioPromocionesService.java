@@ -7,6 +7,7 @@ import ttm.dao.ItinerarioDAO;
 
 public class ItinerarioPromocionesService {
 
+	//Service para listar las promociones compradas por un usuario
 	public List<Promocion> list(Integer id) throws SQLException{
 		ItinerarioDAO itinerariodao=new ItinerarioDAO();
 		return itinerariodao.promocionesCompradas(id);

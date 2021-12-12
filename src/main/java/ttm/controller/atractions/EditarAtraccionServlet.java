@@ -2,7 +2,6 @@ package ttm.controller.atractions;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,22 +11,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Atraccion;
 import ttm.services.AtraccionService;
 
+//Sevlet para editar una atraccion
 @WebServlet("/attractions/edit.do")
 public class EditarAtraccionServlet extends HttpServlet {
-
-	//editar una atraccion...
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1067641124758904693L;
 	private AtraccionService attractionService;
 
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.attractionService = new AtraccionService();
 	}
 
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
@@ -44,9 +41,9 @@ public class EditarAtraccionServlet extends HttpServlet {
 		dispatcher.forward(req, resp);
 	}
 
+	//Post
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("nombre");
 		Double costo = Double.parseDouble(req.getParameter("costo"));

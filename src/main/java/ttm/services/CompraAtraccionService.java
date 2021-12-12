@@ -12,6 +12,7 @@ public class CompraAtraccionService {
 	AtraccionDAO attractionDAO = new AtraccionDAO();
 	UsuarioDAO userDAO = new UsuarioDAO();
 
+	//Service para comprar una atraccion
 	public Map<String, String> buy(Integer userId, Integer attractionId) throws SQLException {
 		Map<String, String> errors = new HashMap<String, String>();
 
@@ -32,7 +33,6 @@ public class CompraAtraccionService {
 			userDAO.CompraUsuario(user, attraction);
 			attractionDAO.actualizarAtraccion(attraction);
 		}
-
 		return errors;
 
 	}

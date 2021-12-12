@@ -13,22 +13,20 @@ public class UsuarioService {
 		return userdao.listaUsuario();
 	}
 
-	// no le genera un id itinerario porque se crea con la primer compra...
+	//Service que crea un usuario
 	public Usuario create(String nombre, String password, Double presupuesto, Double tiempo, Integer admin)
 			throws SQLException {
 		Usuario user = new Usuario(nombre, presupuesto, tiempo, password, admin);
 		user.setPassword(password);
-
 		UsuarioDAO miuser = new UsuarioDAO();
 		if (user.isValid()) {
 			miuser.insert(user);
 		}
-
 		return user;
 	}
 
+	//Service que actualiza los datos de un usuario dado su id
 	public Usuario update(Integer id, String nombre, Double presupuesto, Double tiempo, Integer admin, String password) throws SQLException {
-
 		UsuarioDAO userDAO =new UsuarioDAO();
 		Usuario user = userDAO.findById(id);
 
@@ -41,18 +39,16 @@ public class UsuarioService {
 		if (user.isValid()) {
 			userDAO.modificar(user);
 		}
-
 		return user;
 	}
 
-	
-	  public void delete(Integer id) throws SQLException { 
-	  
-	  UsuarioDAO userDAO = new UsuarioDAO();
-	  userDAO.delete(id); 
-	  }
+	//Service que borra un usuario
+	public void delete(Integer id) throws SQLException {
+		UsuarioDAO userDAO = new UsuarioDAO();
+		userDAO.delete(id);
+	}
 	 
-	
+	//Service que busca un usuario por id
 	public Usuario find(Integer id) throws SQLException {
 		UsuarioDAO usuariodao = new UsuarioDAO();
 		return usuariodao.findById(id);

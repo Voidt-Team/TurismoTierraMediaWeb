@@ -10,17 +10,13 @@ import ttm.db.ConnectionProvider;
 import ttm.model.Atraccion;
 
 public class AtraccionDAO {
-
-	// Agregar aca querys para ABM de atracciones
-
-	// Actualizacion de cupo de atraccion
+	//Metodo que actualiza el cupo de una atraccion
 	public void actualizarAtraccion(Atraccion atra) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
-
+		
 		String query = "UPDATE atracciones set cupo = ? WHERE id_atraccion = ?";
-
+		
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-
 		if (atra.getCupo() > 0) {
 			preparedStatement.setInt(1, atra.getCupo() - 1);
 			preparedStatement.setInt(2, atra.getId());
@@ -28,7 +24,7 @@ public class AtraccionDAO {
 		}
 	}
 
-	// Atracciones preferidas
+	//Metodo que devuelve un listado de Atracciones preferidas de un usuario dado
 	public List<Atraccion> atraccionesPreferidas(Integer id_usuario) throws SQLException {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		Connection connection = ConnectionProvider.getConnection();
@@ -52,7 +48,7 @@ public class AtraccionDAO {
 		return atracciones;
 	}
 
-	// Atracciones No preferidas
+	//Metodo que devuelve un listado de Atracciones NO preferidas de un usuario dado
 	public List<Atraccion> atraccionesNoPreferidas(Integer id) throws SQLException {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		Connection connection = ConnectionProvider.getConnection();
@@ -75,12 +71,11 @@ public class AtraccionDAO {
 		return atracciones;
 	}
 
-	// Devuelve una atraccion buscando por su id
+	//Metodo que devuelve una atraccion buscando por su id
 	public Atraccion findById(Integer id_atraccion) throws SQLException {
 		Atraccion atraccion = null;
-
 		Connection connection = ConnectionProvider.getConnection();
-
+		
 		String query = "SELECT * FROM atracciones WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -90,11 +85,10 @@ public class AtraccionDAO {
 		if (resultSet.next()) {
 			atraccion = toAtraccion(resultSet);
 		}
-
 		return atraccion;
 	}
 
-	// lista de atracciones
+	//Metodo que devuelve un listado de todas las atracciones
 	public List<Atraccion> findAll() throws SQLException {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		Connection connection = ConnectionProvider.getConnection();
@@ -102,7 +96,6 @@ public class AtraccionDAO {
 		String query = "SELECT * FROM atracciones ";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		while (resultSet.next()) {
@@ -112,7 +105,7 @@ public class AtraccionDAO {
 		return atracciones;
 	}
 
-	// este metodo se encarga de crear un objeto con los resultados de la consulta
+	//Metodo que crea un objeto de tipo atraccion
 	public Atraccion toAtraccion(ResultSet resultSet) throws SQLException {
 		Integer id = resultSet.getInt("id_atraccion");
 		String nombre = resultSet.getString("nombre");
@@ -126,8 +119,8 @@ public class AtraccionDAO {
 		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion, descripcion, imagen);
 	}
 
+	//Metodo que crea un objeto de tipo atraccion con tres datos
 	public Atraccion toAtraccionCorto(ResultSet resultSet) throws SQLException {
-
 		String nombre = resultSet.getString("nombre");
 		Double costo = resultSet.getDouble("costo");
 		Double tiempo = resultSet.getDouble("tiempo");
@@ -135,11 +128,12 @@ public class AtraccionDAO {
 		return new Atraccion(nombre, costo, tiempo);
 	}
 
-	// Insert de atraccion
+	//Metodo que inserta una atraccion en la base de datos
 	public void insert(Atraccion nuevaAtraccion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "INSERT INTO atracciones(nombre, costo, tiempo, cupo, id_tipo_de_atraccion,descripcion,imagen) VALUES (?,?,?,?,?,?,?)";
+		String query = "INSERT INTO atracciones(nombre, costo, tiempo, cupo, id_tipo_de_atraccion,descripcion,imagen)"
+				+ " VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, nuevaAtraccion.getNombre());
@@ -153,7 +147,7 @@ public class AtraccionDAO {
 
 	}
 
-	// Delete de atraccion
+	//Metodo que borra una atraccion
 	public void delete(Integer id) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 		
@@ -165,11 +159,12 @@ public class AtraccionDAO {
 
 	}
 
-	// modifica la atraccion con los datos del form...
+	//Metodo que modifica una atraccion con los datos cargados en el formulario
 	public void modificar(Atraccion atraccion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, id_tipo_de_atraccion = ?, descripcion= ?, imagen= ?  WHERE id_atraccion = ?";
+		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, id_tipo_de_atraccion = ?, descripcion= ?, imagen= ?  "
+				+ "WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -182,7 +177,6 @@ public class AtraccionDAO {
 		preparedStatement.setString(7, atraccion.getImagen());
 		preparedStatement.setInt(8, atraccion.getId());
 		preparedStatement.executeUpdate();
-
 	}
 
 }

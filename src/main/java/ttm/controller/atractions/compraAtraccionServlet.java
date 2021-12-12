@@ -3,7 +3,6 @@ package ttm.controller.atractions;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,22 +13,20 @@ import ttm.model.Usuario;
 import ttm.dao.*;
 import ttm.services.CompraAtraccionService;
 
+//Sevlet para comprar atraccion
 @WebServlet("/attractions/buy.do")
 public class compraAtraccionServlet extends HttpServlet {
-
-	// servlet para cuando se compre una atraccion
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8394487074174932293L;
 	private CompraAtraccionService buyAttractionService;
 
-	@Override // inicializa el servicio
+	//Inicializa el servicio
+	@Override 
 	public void init() throws ServletException {
 		super.init();
 		this.buyAttractionService = new CompraAtraccionService();
 	}
 
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UsuarioDAO userdao = new UsuarioDAO();
@@ -41,7 +38,6 @@ public class compraAtraccionServlet extends HttpServlet {
 		try {
 			errors = buyAttractionService.buy(user.getId(), attractionId);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -49,7 +45,6 @@ public class compraAtraccionServlet extends HttpServlet {
 		try {
 			user2 = userdao.findById(user.getId());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		req.getSession().setAttribute("usuario", user2);
@@ -62,7 +57,6 @@ public class compraAtraccionServlet extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/attractions/index.do");
-
 		dispatcher.forward(req, resp);
 	}
 }

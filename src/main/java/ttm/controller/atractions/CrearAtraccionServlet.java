@@ -2,7 +2,6 @@ package ttm.controller.atractions;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,33 +11,30 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Atraccion;
 import ttm.services.AtraccionService;
 
+//Sevlet para crear una nueva atraccion
 @WebServlet("/attractions/create.do")
 public class CrearAtraccionServlet extends HttpServlet {
-
-	//crea una nueva atraccion...
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7542258709089360621L;
 	private AtraccionService attractionService;
 
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.attractionService = new AtraccionService();
 	}
 
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/vistas/atracciones/crear.jsp");
 		dispatcher.forward(req, resp);
 	}
 
+	//Post
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		String nombre = req.getParameter("nombre");
 		Double costo = Double.parseDouble(req.getParameter("costo"));
 		Double tiempo = Double.parseDouble(req.getParameter("tiempo"));
@@ -51,20 +47,17 @@ public class CrearAtraccionServlet extends HttpServlet {
 		try {
 			attraction = attractionService.create(nombre, costo, tiempo, cupo, tipoAtraccion, descripcion, imagen);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		if (attraction.isValid()) {
-			resp.sendRedirect("/ttm_web_voidteam/attractions/listado.do"); //invoca el camino para refrescar las listas
+			//Invoca el camino para refrescar las listas
+			resp.sendRedirect("/ttm_web_voidteam/attractions/listado.do"); 
 		} else {
 			req.setAttribute("attraction", attraction);
-
 			RequestDispatcher dispatcher = getServletContext()
 					.getRequestDispatcher("/vistas/atracciones/crear.jsp");
 			dispatcher.forward(req, resp);
 		}
-
 	}
-
 }

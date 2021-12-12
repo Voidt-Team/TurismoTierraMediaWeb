@@ -2,7 +2,6 @@ package ttm.controller.usuario;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,22 +11,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import ttm.model.Usuario;
 import ttm.services.UsuarioService;
 
+//Sevlet para editar un usuario
 @WebServlet("/usuario/edit.do")
 public class EditarUsuarioServlet extends HttpServlet {
-
-	// este servlet edita un usuario
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3174361794343213864L;
 	private UsuarioService usuarioService;
 
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.usuarioService = new UsuarioService();
 	}
 
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
@@ -36,7 +33,6 @@ public class EditarUsuarioServlet extends HttpServlet {
 		try {
 			usuario = usuarioService.find(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -46,9 +42,9 @@ public class EditarUsuarioServlet extends HttpServlet {
 		dispatcher.forward(req, resp);
 	}
 
+	//Post
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nombre = req.getParameter("nombre");
 		String password = req.getParameter("password");
@@ -61,7 +57,6 @@ public class EditarUsuarioServlet extends HttpServlet {
 
 			usuario = usuarioService.update(id, nombre, presupuesto, tiempo, admin, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -6,32 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import ttm.db.ConnectionProvider;
 import ttm.model.TiposDeAtracciones;
 
 public class TiposDeAtraccionesDAO {
-	
-	//Devuelve el nombre de una atraccion dado su ID
+	//Metodo que devuelve el nombre de una atraccion dado su Iid
 	public String findByIdNombre(Integer id_tipo_atraccion) throws SQLException {
 		TiposDeAtracciones tipoDeAtracciones = null;
-
 		Connection connection = ConnectionProvider.getConnection();
-
 		String query = "SELECT T.* FROM tipos_de_atracciones T " + "WHERE T.id_tipo_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_tipo_atraccion);
 		ResultSet resultSet = preparedStatement.executeQuery();
-
 		if (resultSet.next()) {
 			tipoDeAtracciones = toTiposDeAtracciones(resultSet);
 		}
-
 		return tipoDeAtracciones.getNombre();
 	}
 	
-	// este metodo se encarga de crear un objeto con los resultados de la consulta
+	//Metodo que se encarga de crear un objeto tipos de atracciones
 	public TiposDeAtracciones toTiposDeAtracciones(ResultSet resultSet) throws SQLException {
 		Integer id_tipo_atraccion = resultSet.getInt("id_tipo_atraccion");
 		String nombre = resultSet.getString("nombre");
@@ -39,6 +33,7 @@ public class TiposDeAtraccionesDAO {
 		return new TiposDeAtracciones(id_tipo_atraccion, nombre);
 	}
 
+	//Metodo que lista todos los tipos de atracciones
 	public List<TiposDeAtracciones> findAll() throws SQLException {
 		List<TiposDeAtracciones> tipos_atracciones = new ArrayList<TiposDeAtracciones>();
 		Connection connection = ConnectionProvider.getConnection();

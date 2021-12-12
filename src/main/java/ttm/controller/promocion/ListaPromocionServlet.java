@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletException;
@@ -16,36 +15,30 @@ import ttm.model.Atraccion;
 import ttm.model.Promocion;
 import ttm.services.PromocionService;
 
+//Sevlet que muestra la lista de promociones para todos los usuarios
 @WebServlet("/promocion/index.do")
 public class ListaPromocionServlet extends HttpServlet implements Servlet {
-
-	// este servlet genera la lista de promociones a mostrar en el index para todos
-	// los usuarios
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5102305310038535666L;
-
 	private PromocionService promocionService;
 
+	//Inicializa el servicio
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		this.promocionService = new PromocionService();
 	}
 
-	
+	//Get
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = promocionService.list();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		req.setAttribute("listaPromociones", listaPromociones);
+		@SuppressWarnings("unchecked")
 		List<Atraccion> latracciones = (List<Atraccion>) req.getAttribute("listaAtracciones");
 		List<Object> juntas = new ArrayList<>();
 		
@@ -59,10 +52,8 @@ public class ListaPromocionServlet extends HttpServlet implements Servlet {
 		}
 		req.setAttribute("juntas", juntas);
 		
-		// invoca al index para mostrar las listas
+		//Invoca al index para mostrar las listas
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
 		dispatcher.forward(req, resp);
-
 	}
-
 }
