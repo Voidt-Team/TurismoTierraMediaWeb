@@ -23,12 +23,8 @@ body {
 	margin-left: 32.5%;
 }
 
-@font-face {
-	font-family: medieval;
-	src: url(medieval.otf);
-}
 
 .titulo {
-	font-family: "medieval";
+	font-family: 'Kings';
 	font-size: 200%;
 }
