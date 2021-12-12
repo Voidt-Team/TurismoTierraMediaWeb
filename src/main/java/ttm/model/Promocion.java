@@ -32,6 +32,16 @@ public class Promocion {
 	}
 
 
+	
+	
+	public Promocion(Integer id) {
+		super();
+		this.id = id;
+	}
+
+
+
+
 	public Promocion(String nombre, Double costo, Double tiempo, Integer tipo, Integer bonificacion, String descripcion,
 			String imagen) {
 		super();

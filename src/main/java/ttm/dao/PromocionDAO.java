@@ -123,10 +123,14 @@ public class PromocionDAO {
 	}
 
 	// Borrar promocion
-	public void delete(Promocion promocion) {
-		// TENEMOS QUE VER COMO HACERLO PORQUE PIDE BORRADO LOGICO
-		// Podriamos implementarlo seteando el valor del cupo a 0 o a un numero negativo
-		// Asi no le agregamos campos a la tabla atracciones
+	public void delete(Integer id) throws SQLException {
+Connection connection = ConnectionProvider.getConnection();
+		
+		String query = "DELETE FROM promociones WHERE id_promocion = ?";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, id);
+		preparedStatement.executeUpdate();
 
 	}
 

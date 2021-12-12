@@ -96,7 +96,7 @@
 								<a href="/ttm_web_voidteam/usuario/edit.do?id=${tmp_user.id}"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
-								<a href="<%-- /turismo/users/delete.do?id=${tmp_user.id_usuario} --%>"
+								<a href="/ttm_web_voidteam/usuario/delete.do?id=${tmp_user.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
 							</c:if></td> 

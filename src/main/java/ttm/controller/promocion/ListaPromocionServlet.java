@@ -34,6 +34,7 @@ public class ListaPromocionServlet extends HttpServlet implements Servlet {
 		this.promocionService = new PromocionService();
 	}
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Promocion> listaPromociones = null;
@@ -46,7 +47,7 @@ public class ListaPromocionServlet extends HttpServlet implements Servlet {
 
 		req.setAttribute("listaPromociones", listaPromociones);
 		List<Atraccion> latracciones = (List<Atraccion>) req.getAttribute("listaAtracciones");
-		List juntas = new ArrayList<>();
+		List<Object> juntas = new ArrayList<>();
 		
 		for(Atraccion atrac:latracciones) {
 			

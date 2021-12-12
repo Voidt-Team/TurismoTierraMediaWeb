@@ -163,6 +163,18 @@ public class UsuarioDAO {
 
 	}
 	
+	// Delete de usuario
+	public void delete(Integer id) throws SQLException {
+		Connection connection = ConnectionProvider.getConnection();
+		
+		String query = "DELETE FROM usuarios WHERE id_usuario = ?";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, id);
+		preparedStatement.executeUpdate();
+
+	}
+	
 	// update un usuario en la base de datos
 		public void modificar(Usuario nuevo) throws SQLException {
 

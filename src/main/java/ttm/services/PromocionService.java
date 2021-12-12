@@ -47,14 +47,13 @@ public class PromocionService {
 
 		return promo;
 	}
-/*
-	public void delete(Integer id) {
-		Attraction attraction = new Attraction(id, null, null, null, null);
 
-		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		attractionDAO.delete(attraction);
+	public void delete(Integer id) throws SQLException {
+
+		PromocionDAO promoDAO = new PromocionDAO();
+		promoDAO.delete(id);
 	}
-*/
+
 	public Promocion find(Integer id) throws SQLException {
 		PromocionDAO promodao = new PromocionDAO();
 		return promodao.findById(id);

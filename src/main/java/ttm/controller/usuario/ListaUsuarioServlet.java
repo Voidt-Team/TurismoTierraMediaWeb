@@ -17,7 +17,7 @@ import ttm.services.UsuarioService;
 
 @WebServlet("/usuarios/index.do")
 public class ListaUsuarioServlet extends HttpServlet implements Servlet {
-
+	//listado de usuarios visto por admin...
 	private static final long serialVersionUID = -8346640902238722429L;
 	private UsuarioService userService;
 

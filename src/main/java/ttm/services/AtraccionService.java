@@ -48,7 +48,7 @@ public class AtraccionService {
 	}
 
 	public void delete(Integer id) throws SQLException {
-		System.out.println("dentrodel delete");
+	
 		AtraccionDAO attractionDAO = new AtraccionDAO();
 		attractionDAO.delete(id);
 	}

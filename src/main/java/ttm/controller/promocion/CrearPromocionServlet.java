@@ -57,7 +57,7 @@ public class CrearPromocionServlet extends HttpServlet {
 		}
 		
 		if (promo.isValid()) {
-			resp.sendRedirect("/ttm_web_voidteam/attractions/index.do"); //invoca el camino para refrescar las listas
+			resp.sendRedirect("/ttm_web_voidteam/attractions/listado.do"); //invoca el camino para refrescar las listas
 		} else {
 			req.setAttribute("attraction", promo);
 

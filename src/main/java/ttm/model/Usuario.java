@@ -31,6 +31,12 @@ public class Usuario {
 	}
 	
 	
+	public Usuario(Integer id_usuario) {
+		super();
+		this.id_usuario = id_usuario;
+	}
+
+
 	//datos que vienen del formulario
 	public Usuario(String nombre, Double presupuesto, Double tiempo, String password, Integer admin) {
 		super();

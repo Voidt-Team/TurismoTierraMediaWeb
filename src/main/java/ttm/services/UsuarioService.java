@@ -45,13 +45,13 @@ public class UsuarioService {
 		return user;
 	}
 
-	/*
-	 * public void delete(Integer id) { Attraction attraction = new Attraction(id,
-	 * null, null, null, null);
-	 * 
-	 * AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-	 * attractionDAO.delete(attraction); }
-	 */
+	
+	  public void delete(Integer id) throws SQLException { 
+	  
+	  UsuarioDAO userDAO = new UsuarioDAO();
+	  userDAO.delete(id); 
+	  }
+	 
 	
 	public Usuario find(Integer id) throws SQLException {
 		UsuarioDAO usuariodao = new UsuarioDAO();
