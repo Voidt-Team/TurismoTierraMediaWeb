@@ -152,7 +152,7 @@
 								<a href="/ttm_web_voidteam/attractions/edit.do?id=${Atraccion.id}"
 									class="btn btn-light rounded-0" role="button"><i
 									class="bi bi-pencil-fill"></i></a>
-								<a href="<%-- /turismo/attractions/delete.do?id=${attraction.id} --%>"
+								<a href="/ttm_web_voidteam/attractions/delete.do?id=${Atraccion.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
 							</c:if></td>

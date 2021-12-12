@@ -41,19 +41,18 @@ public class AtraccionService {
 
 		if (atraccion.isValid()) {
 			attractionDAO.modificar(atraccion);
-			// XXX: si no devuelve "1", es que hubo más errores
+			
 		}
 
 		return atraccion;
 	}
-/*
-	public void delete(Integer id) {
-		Attraction attraction = new Attraction(id, null, null, null, null);
 
-		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		attractionDAO.delete(attraction);
+	public void delete(Integer id) throws SQLException {
+		System.out.println("dentrodel delete");
+		AtraccionDAO attractionDAO = new AtraccionDAO();
+		attractionDAO.delete(id);
 	}
-*/
+
 	public Atraccion find(Integer id) throws SQLException {
 		AtraccionDAO atracciondao = new AtraccionDAO();
 		return atracciondao.findById(id);

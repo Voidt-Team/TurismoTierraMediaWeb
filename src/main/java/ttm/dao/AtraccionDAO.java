@@ -6,23 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import ttm.db.ConnectionProvider;
 import ttm.model.Atraccion;
 
 public class AtraccionDAO {
-	
-	//Agregar aca querys para ABM de atracciones
-	
-	//Actualizacion de cupo de atraccion
+
+	// Agregar aca querys para ABM de atracciones
+
+	// Actualizacion de cupo de atraccion
 	public void actualizarAtraccion(Atraccion atra) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
-		
+
 		String query = "UPDATE atracciones set cupo = ? WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		
-		if(atra.getCupo() > 0) {
+
+		if (atra.getCupo() > 0) {
 			preparedStatement.setInt(1, atra.getCupo() - 1);
 			preparedStatement.setInt(2, atra.getId());
 			preparedStatement.executeUpdate();
@@ -33,20 +32,12 @@ public class AtraccionDAO {
 	public List<Atraccion> atraccionesPreferidas(Integer id_usuario) throws SQLException {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		Connection connection = ConnectionProvider.getConnection();
-		
-		String query = "SELECT DISTINCT A.* FROM atracciones A "
-				+ "INNER JOIN usuarios U "
-				+ "WHERE A.id_tipo_de_atraccion = U.id_tipo_de_atraccion "
-				+ "AND A.costo <= U.presupuesto "
-				+ "AND A.tiempo <= U.tiempo "
-				+ "AND A.cupo > 0"
-				+ "AND U.id_usuario = ?"
-				+ "EXCEPT "
-				+ "SELECT DISTINCT A.* FROM atracciones A "
-				+ "INNER JOIN itinerarios I "
-				+ "INNER JOIN usuarios U "
-				+ "WHERE U.id_itinerario = I.id_itinerario "
-				+ "AND A.id_atraccion = I.id_atraccion";
+
+		String query = "SELECT DISTINCT A.* FROM atracciones A " + "INNER JOIN usuarios U "
+				+ "WHERE A.id_tipo_de_atraccion = U.id_tipo_de_atraccion " + "AND A.costo <= U.presupuesto "
+				+ "AND A.tiempo <= U.tiempo " + "AND A.cupo > 0" + "AND U.id_usuario = ?" + "EXCEPT "
+				+ "SELECT DISTINCT A.* FROM atracciones A " + "INNER JOIN itinerarios I " + "INNER JOIN usuarios U "
+				+ "WHERE U.id_itinerario = I.id_itinerario " + "AND A.id_atraccion = I.id_atraccion";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id_usuario);
@@ -66,19 +57,11 @@ public class AtraccionDAO {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		Connection connection = ConnectionProvider.getConnection();
 
-		String query = "SELECT DISTINCT A.* FROM atracciones A "
-				+ "INNER JOIN usuarios U "
-				+ "WHERE A.id_tipo_de_atraccion <> U.id_tipo_de_atraccion "
-				+ "AND A.costo <= U.presupuesto "
-				+ "AND A.tiempo <= U.tiempo "
-				+ "AND A.cupo > 0"
-				+ "AND U.id_usuario = ?"
-				+ "EXCEPT "
-				+ "SELECT DISTINCT A.* FROM atracciones A "
-				+ "INNER JOIN itinerarios I "
-				+ "INNER JOIN usuarios U "
-				+ "WHERE U.id_itinerario = I.id_itinerario "
-				+ "AND A.id_atraccion = I.id_atraccion";
+		String query = "SELECT DISTINCT A.* FROM atracciones A " + "INNER JOIN usuarios U "
+				+ "WHERE A.id_tipo_de_atraccion <> U.id_tipo_de_atraccion " + "AND A.costo <= U.presupuesto "
+				+ "AND A.tiempo <= U.tiempo " + "AND A.cupo > 0" + "AND U.id_usuario = ?" + "EXCEPT "
+				+ "SELECT DISTINCT A.* FROM atracciones A " + "INNER JOIN itinerarios I " + "INNER JOIN usuarios U "
+				+ "WHERE U.id_itinerario = I.id_itinerario " + "AND A.id_atraccion = I.id_atraccion";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setInt(1, id);
@@ -92,7 +75,7 @@ public class AtraccionDAO {
 		return atracciones;
 	}
 
-	//Devuelve una atraccion buscando por su id
+	// Devuelve una atraccion buscando por su id
 	public Atraccion findById(Integer id_atraccion) throws SQLException {
 		Atraccion atraccion = null;
 
@@ -110,26 +93,25 @@ public class AtraccionDAO {
 
 		return atraccion;
 	}
-	
+
 	// lista de atracciones
-		public List<Atraccion> findAll() throws SQLException {
-			List<Atraccion> atracciones = new ArrayList<Atraccion>();
-			Connection connection = ConnectionProvider.getConnection();
-			
-			String query = "SELECT * FROM atracciones ";
+	public List<Atraccion> findAll() throws SQLException {
+		List<Atraccion> atracciones = new ArrayList<Atraccion>();
+		Connection connection = ConnectionProvider.getConnection();
 
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
+		String query = "SELECT * FROM atracciones ";
 
-			ResultSet resultSet = preparedStatement.executeQuery();
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-			while (resultSet.next()) {
-				Atraccion atraccion = toAtraccion(resultSet);
-				atracciones.add(atraccion);
-			}
-			return atracciones;
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while (resultSet.next()) {
+			Atraccion atraccion = toAtraccion(resultSet);
+			atracciones.add(atraccion);
 		}
-	
-	
+		return atracciones;
+	}
+
 	// este metodo se encarga de crear un objeto con los resultados de la consulta
 	public Atraccion toAtraccion(ResultSet resultSet) throws SQLException {
 		Integer id = resultSet.getInt("id_atraccion");
@@ -141,11 +123,11 @@ public class AtraccionDAO {
 		String descripcion = resultSet.getString("descripcion");
 		String imagen = resultSet.getString("imagen");
 
-		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion,descripcion,imagen);
+		return new Atraccion(id, nombre, costo, tiempo, cupo, tipo_atraccion, descripcion, imagen);
 	}
-	
+
 	public Atraccion toAtraccionCorto(ResultSet resultSet) throws SQLException {
-	
+
 		String nombre = resultSet.getString("nombre");
 		Double costo = resultSet.getDouble("costo");
 		Double tiempo = resultSet.getDouble("tiempo");
@@ -153,7 +135,7 @@ public class AtraccionDAO {
 		return new Atraccion(nombre, costo, tiempo);
 	}
 
-	//Insert de atraccion
+	// Insert de atraccion
 	public void insert(Atraccion nuevaAtraccion) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 
@@ -171,17 +153,22 @@ public class AtraccionDAO {
 
 	}
 
-	//Delete de atraccion
-	public void delete(Atraccion atraccion) {
-		//TENEMOS QUE VER COMO HACERLO PORQUE PIDE BORRADO LOGICO
-		//Podriamos implementarlo seteando el valor del cupo a 0 o a un numero negativo
-		//Asi no le agregamos campos a la tabla atracciones
-	}
-
-	//modifica la atraccion con los datos del form...
-	public void modificar(Atraccion atraccion) throws SQLException {
+	// Delete de atraccion
+	public void delete(Integer id) throws SQLException {
 		Connection connection = ConnectionProvider.getConnection();
 		
+		String query = "DELETE FROM atracciones WHERE id_atraccion = ?";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, id);
+		preparedStatement.executeUpdate();
+
+	}
+
+	// modifica la atraccion con los datos del form...
+	public void modificar(Atraccion atraccion) throws SQLException {
+		Connection connection = ConnectionProvider.getConnection();
+
 		String query = "UPDATE atracciones set nombre = ?, costo = ?, tiempo = ?, cupo = ?, id_tipo_de_atraccion = ?, descripcion= ?, imagen= ?  WHERE id_atraccion = ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -195,7 +182,7 @@ public class AtraccionDAO {
 		preparedStatement.setString(7, atraccion.getImagen());
 		preparedStatement.setInt(8, atraccion.getId());
 		preparedStatement.executeUpdate();
-		
+
 	}
 
 }
